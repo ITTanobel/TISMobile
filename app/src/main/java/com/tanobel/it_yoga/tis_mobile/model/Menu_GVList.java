@@ -5,8 +5,21 @@ package com.tanobel.it_yoga.tis_mobile.model;
  */
 
 public class Menu_GVList {
-    String code, nama, gambar, bg;
-    int notifcount;
+    private String code, nama, gambar, bg;
+    private int notifcount;
+
+    public Menu_GVList() {
+        // TODO Auto-generated constructor stub
+    }
+
+    public Menu_GVList(String code, String nama, String gambar, String bg, int notifcount) {
+        super();
+        this.code=code;
+        this.nama=nama;
+        this.gambar=gambar;
+        this.bg=bg;
+        this.notifcount=notifcount;
+    }
 
     public String getCode() {
         return code;
@@ -49,3 +62,5 @@ public class Menu_GVList {
     }
 
 }
+
+

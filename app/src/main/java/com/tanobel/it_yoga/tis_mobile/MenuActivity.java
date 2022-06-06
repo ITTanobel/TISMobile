@@ -108,6 +108,8 @@ public class MenuActivity extends AppCompatActivity
 
         if (!userid.equals("demo_account")) {
             getDetailUser();
+        } else {
+            getDetailUserDemo();
         }
 
         if (userid.equals("none") || userid.trim().equals("")) {
@@ -166,9 +168,6 @@ public class MenuActivity extends AppCompatActivity
 
         if (!userid.equals("demo_account")) {
             getVersion();
-        } else {
-            DemoAccount demoAccount = new DemoAccount();
-            demoAccount.execute("Demo_Account", "Demo_Account@Demo.com", "");
         }
     }
 
@@ -469,45 +468,21 @@ public class MenuActivity extends AppCompatActivity
         }
     }
 
-    private class DemoAccount extends AsyncTask<String, String, String> {
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-
-        protected String doInBackground(String... args) {
-
-            String name = args[0];
-            String email = args[1];
-
-            try {
-
-                final String[] imggenre = {""};
+    void getDetailUserDemo() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
                 txtusername  = findViewById(R.id.txtusername);
                 txtuseremail = findViewById(R.id.txtuseremail);
                 imguser = findViewById(R.id.image_user);
 
-                txtusername.setText(name);
-                txtuseremail.setText(email);
-                imggenre[0] = "male_user";
+                txtusername.setText("demo_account");
+                txtuseremail.setText("demo_account@Demo.com");
+                genre = "MALE";
 
-                imguser.setImageResource(getResources().getIdentifier(imggenre[0], "mipmap", getPackageName()));
+                imguser.setImageResource(getResources().getIdentifier("male_user", "mipmap", getPackageName()));
                 imguser.setBackgroundResource(R.drawable.user_shape);
-                ((MainModule) getApplicationContext()).setUserImage(null);
-            } catch (
-                    Exception e) {
-                e.printStackTrace();
-            }
-            return "";
-        }
-
-        protected void onPostExecute(String result) {
-            // dismiss the dialog once product deleted
-            //Toast.makeText(getApplicationContext(),result,Toast.LENGTH_LONG).show();
-
-        }
+                ((MainModule) getApplicationContext()).setUserImage(null);                }
+        },500);
     }
 }

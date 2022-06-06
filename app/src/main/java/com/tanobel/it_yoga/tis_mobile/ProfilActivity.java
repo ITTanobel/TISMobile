@@ -123,7 +123,13 @@ public class ProfilActivity extends AppCompatActivity
             }
         });
 
-        getDetailUser();
+        String userid = shp.getString("UserId", "none");
+
+        if (!userid.equals("demo_account")) {
+            getDetailUser();
+        } else {
+            getDetailUserDemo();
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -480,6 +486,21 @@ public class ProfilActivity extends AppCompatActivity
             Toast toast = Toast.makeText(this, "Tidak terhubung ke internet", Toast.LENGTH_SHORT);
             toast.show();
         }
+    }
+
+    void getDetailUserDemo() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                txtuserprofil.setText("demo_account");
+                txtusertis.setText("demo_account");
+                txtnameprofil.setText("demo_account");
+                txtemailprofil.setText("demo_account@Demo.com");
+
+                imgprofil.setImageResource(getResources().getIdentifier("male_user", "mipmap", getPackageName()));
+                imgprofil.setBackgroundResource(R.drawable.user_shape);
+            }
+        },500);
     }
 
     void updateImageProfil() {

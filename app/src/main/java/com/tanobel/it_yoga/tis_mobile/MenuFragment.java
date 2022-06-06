@@ -58,7 +58,11 @@ public class MenuFragment extends Fragment {
         listAdapter = new Menu_GVAdapter(dataList, getActivity().getApplicationContext());
         dataList.clear();
 
-        getItem();
+        if (((MainModule) getActivity().getApplicationContext()).getUserCode().equals("demo_account")) {
+            getItemDemo();
+        } else  {
+            getItem();
+        }
 
         gridView = view.findViewById(R.id.grid);
         gridView.setAdapter(listAdapter);
@@ -151,5 +155,21 @@ public class MenuFragment extends Fragment {
             Toast toast = Toast.makeText(getActivity().getApplicationContext(), "Tidak terhubung ke internet", Toast.LENGTH_SHORT);
             toast.show();
         }
+    }
+
+    void getItemDemo() {
+        Menu_GVList list1 = new Menu_GVList("CRM00", "CRM", "ic_crm", "crm_shape", 0);
+        Menu_GVList list2 = new Menu_GVList("APP00", "Approval", "ic_apv", "apv_shape", 0);
+        Menu_GVList list3 = new Menu_GVList("UBC00", "Unblocked", "ic_unblck", "unblck_shape", 0);
+        Menu_GVList list4 = new Menu_GVList("AST00", "Asset", "ic_asset", "apv_purc_shape", 0);
+        Menu_GVList list5 = new Menu_GVList("UTY00", "Utility", "ic_utility", "utility_shape", 0);
+
+        dataList.add(list1);
+        dataList.add(list2);
+        dataList.add(list3);
+        dataList.add(list4);
+        dataList.add(list5);
+
+        listAdapter.notifyDataSetChanged();
     }
 }

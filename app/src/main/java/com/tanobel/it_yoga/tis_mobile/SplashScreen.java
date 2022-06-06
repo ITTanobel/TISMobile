@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 public class SplashScreen extends AppCompatActivity {
-    private int waktu_loading=4000;
+    private int waktu_loading=3000;
     TextView txtVersi;
     String versi;
 
