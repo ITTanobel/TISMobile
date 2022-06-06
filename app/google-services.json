@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "417034421806",
+    "firebase_url": "https://tismobilenotify.firebaseio.com",
+    "project_id": "tismobilenotify",
+    "storage_bucket": "tismobilenotify.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:417034421806:android:04fcd945b46c24bd",
+        "android_client_info": {
+          "package_name": "com.tanobel.it_yoga.tis_mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "417034421806-m6lihg1are6q2vk8gskvtc0p3929c2v3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tanobel.it_yoga.tis_mobile",
+            "certificate_hash": "8a5ab813f282d628389c2fa0c2f6a430969edd8f"
+          }
+        },
+        {
+          "client_id": "417034421806-rbpd3p35ri14rd8e3t091a56li79mcjj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZG-orwDQ80YvBR5K_3w91erA5fajmjNM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "417034421806-rbpd3p35ri14rd8e3t091a56li79mcjj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <androidx.cardview.widget.CardView
+        style="@style/loginCard"
+        android:layout_gravity="top"
+        android:layout_margin="10dp"
+        android:background="@color/whiteCardColor"
+        app:cardCornerRadius="@dimen/loginCardRadius">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/headerTextPrimary"
+                android:layout_marginTop="@dimen/loginViewsMargin"
+                android:gravity="center"
+                android:text="@string/register" />
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fillViewport="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/parent"
+                        android:layout_marginTop="@dimen/signup_text_margin_top">
+
+                        <EditText
+                            style="@style/modifiedEditText"
+                            android:id="@+id/txtnik"
+                            android:hint="NIK"
+                            android:textSize="16sp"
+                            android:inputType="text"
+                            android:maxLines="1" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/parent"
+                        android:layout_marginTop="@dimen/signup_text_margin_top">
+
+                        <EditText
+                            style="@style/modifiedEditText"
+                            android:id="@+id/txtname"
+                            android:hint="Name"
+                            android:inputType="text"
+                            android:textSize="16sp"
+                            android:maxLines="1" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:text="Genre"
+                        android:textSize="12sp" />
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/spngenre"
+                        style="@style/Widget.AppCompat.Spinner.Underlined"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/genre"
+                        android:minHeight="35dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/parent"
+                        android:layout_marginTop="@dimen/signup_text_margin_top">
+
+                        <EditText
+                            style="@style/modifiedEditText"
+                            android:id="@+id/txtemail"
+                            android:hint="@string/login_email_hint"
+                            android:textSize="16sp"
+                            android:inputType="textEmailAddress"
+                            android:maxLines="1" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/parent"
+                        android:layout_marginTop="@dimen/signup_text_margin_top">
+
+                        <EditText
+                            style="@style/modifiedEditText"
+                            android:id="@+id/txtpassword"
+                            android:hint="@string/login_password_hint"
+                            android:textSize="16sp"
+                            android:inputType="textPassword"
+                            android:maxLines="1" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/parent"
+                        android:layout_marginTop="@dimen/signup_text_margin_top">
+
+                        <EditText
+                            style="@style/modifiedEditText"
+                            android:id="@+id/txtconfpassword"
+                            android:hint="@string/login_confpassword_hint"
+                            android:textSize="16sp"
+                            android:inputType="textPassword"
+                            android:maxLines="1" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <Button
+                        android:id="@+id/btnregister"
+                        style="@style/loginButton"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:text="Sign Up" />
+
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

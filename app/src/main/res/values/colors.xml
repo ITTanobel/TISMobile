@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3f51b5</color>
+    <color name="colorPrimaryDark">#303f9f</color>
+    <color name="colorAccent">#302929</color>
+    <color name="colorTextLayout">#9b9798</color>
+    <color name="fifty_percent_transparency_grey_400">#80bdbdbd</color>
+    <color name="youngBlue">#90a1e8</color>
+    <color name="transparency">#80000000</color>
+    <color name="fifty_percent_transparency_white_500">#b3ffffff</color>
+
+    <color name="crm_shape">#b3ed880c</color>
+    <color name="apv_shape">#b3359604</color>
+    <color name="unblck_shape">#b3979703</color>
+    <color name="crm_input_shape">#b346463b</color>
+    <color name="crm_cancel_shape">#b38c1416</color>
+    <color name="menu_edit_shape">#b347355e</color>
+    <color name="menu_view_shape">#b31e431d</color>
+    <color name="apv_sls_shape">#b32e7037</color>
+    <color name="apv_purc_shape">#b3582549</color>
+    <color name="retur_shape">#b31822e1</color>
+    <color name="utility_shape">#009BB9</color>
+    <color name="check_conn_shape">#749C01</color>
+
+    <color name="text_lgray">#808080</color>
+    <color name="text_gray">#323232</color>
+
+    <!--colors for modern ui-->
+    <color name="whiteTextColor">#fff</color>
+    <color name="primaryTextColor">#00a5ff</color>
+    <color name="loginBkColor">#f0f0f0</color>
+
+    <!--colros for card-->
+    <color name="whiteCardColor">#fff</color>
+</resources>

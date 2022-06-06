@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="type_array">
+        <item>-- Pilih Tipe --</item>
+        <item>Customer Khusus</item>
+        <item>Sales Organization</item>
+    </string-array>
+</resources>
