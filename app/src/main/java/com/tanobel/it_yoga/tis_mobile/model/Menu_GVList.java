@@ -9,7 +9,7 @@ public class Menu_GVList {
     private int notifcount;
 
     public Menu_GVList() {
-        // TODO Auto-generated constructor stub
+        // TODO Auto-generated constructor stub cor
     }
 
     public Menu_GVList(String code, String nama, String gambar, String bg, int notifcount) {
