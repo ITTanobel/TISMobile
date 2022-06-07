@@ -148,7 +148,11 @@ public class SubMenuFragment2 extends Fragment {
     public void onStart() {
         super.onStart();
         dataList.clear();
-        getItem();
+        if (((MainModule) getActivity().getApplicationContext()).getUserCode().equals("demo_account")) {
+            getItemDemo();
+        } else  {
+            getItem();
+        }
     }
 
     void getItem() {
@@ -215,5 +219,25 @@ public class SubMenuFragment2 extends Fragment {
             Toast toast = Toast.makeText(getActivity().getApplicationContext(), "Tidak terhubung ke internet", Toast.LENGTH_SHORT);
             toast.show();
         }
+    }
+
+    void getItemDemo() {
+        Menu_GVList list1;
+        Menu_GVList list2;
+        Menu_GVList list3;
+
+        switch (mParam1) {
+            case "1":
+                list1 = new Menu_GVList("APV01", "Approve PR", "ic_pr", "crm_shape", 0);
+                list2 = new Menu_GVList("APV02", "Approve PO", "ic_po", "apv_sls_shape", 0);
+                list3 = new Menu_GVList("APV03", "Approve 2 PO", "ic_po2", "unblck_shape", 0);
+
+                dataList.add(list1);
+                dataList.add(list2);
+                dataList.add(list3);
+                break;
+        }
+
+        listAdapter.notifyDataSetChanged();
     }
 }

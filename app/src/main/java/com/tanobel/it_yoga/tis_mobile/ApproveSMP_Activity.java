@@ -65,7 +65,12 @@ public class ApproveSMP_Activity extends AppCompatActivity {
         pDialog.setCancelable(false);
 
         shp = this.getSharedPreferences("UserInfo", MODE_PRIVATE);
-        getDetailUser();
+
+        String userid = shp.getString("UserId", "none");
+
+        if (!userid.equals("demo_account")) {
+            getDetailUser();
+        }
 
         //VIEWPAGER
         vp = findViewById(R.id.pager);

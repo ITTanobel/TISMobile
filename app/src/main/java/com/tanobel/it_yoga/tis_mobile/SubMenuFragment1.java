@@ -39,7 +39,7 @@ import okhttp3.Response;
  * Activities that contain this fragment must implement the
  * {@link //SubMenuFragment1.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link SubMenuFragment1#newInstance} factory method to
+ * Use the  factory method to
  * create an instance of this fragment.
  */
 
@@ -198,7 +198,11 @@ public class SubMenuFragment1 extends Fragment {
     public void onStart() {
         super.onStart();
         dataList.clear();
-        getItem();
+        if (((MainModule) getActivity().getApplicationContext()).getUserCode().equals("demo_account")) {
+            getItemDemo();
+        } else  {
+            getItem();
+        }
     }
 
     void getItem() {
@@ -265,5 +269,47 @@ public class SubMenuFragment1 extends Fragment {
             Toast toast = Toast.makeText(getActivity().getApplicationContext(), "Tidak terhubung ke internet", Toast.LENGTH_SHORT);
             toast.show();
         }
+    }
+
+    void getItemDemo() {
+        Menu_GVList list1;
+        Menu_GVList list2;
+        Menu_GVList list3;
+
+        switch (mParam1) {
+            case "0":
+                list1 = new Menu_GVList("CRM01", "Input", "ic_crm_input", "crm_input_shape", 0);
+                list2 = new Menu_GVList("CRM02", "Edit", "ic_menu_edit", "menu_edit_shape", 0);
+                list3 = new Menu_GVList("CRM03", "View", "ic_menu_view", "menu_view_shape", 0);
+
+                dataList.add(list1);
+                dataList.add(list2);
+                dataList.add(list3);
+                break;
+            case "1":
+                list1 = new Menu_GVList("APP01", "Sales Program", "ic_sales_program", "apv_sls_shape", 0);
+                list2 = new Menu_GVList("APP02", "Purchase", "ic_purchase", "apv_purc_shape", 0);
+
+                dataList.add(list1);
+                dataList.add(list2);
+                break;
+            case "2":
+                list1 = new Menu_GVList("UBC01 ", "Sales Order", "ic_crm", "crm_shape", 0);
+
+                dataList.add(list1);
+                break;
+            case "3":
+                list1 = new Menu_GVList("AST01 ", "Scan Asset", "ic_scan", "menu_view_shape", 0);
+
+                dataList.add(list1);
+                break;
+            case "4":
+                list1 = new Menu_GVList("UTY01", "Cek Koneksi", "ic_network_check", "check_conn_shape", 0);
+
+                dataList.add(list1);
+                break;
+        }
+
+        listAdapter.notifyDataSetChanged();
     }
 }
