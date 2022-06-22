@@ -221,7 +221,8 @@ public class LoginActivity extends AppCompatActivity {
 
                     } else {
                         //if token is null that means something wrong
-                        Toast.makeText(getApplicationContext(), "Token not generated", Toast.LENGTH_LONG).show();
+                        //Toast.makeText(getApplicationContext(), "Token not generated", Toast.LENGTH_LONG).show();
+                        registerdevice(userid, "");
                     }
 
                 } else {

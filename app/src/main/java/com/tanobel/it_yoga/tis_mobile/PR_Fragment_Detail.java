@@ -119,7 +119,7 @@ public class PR_Fragment_Detail extends Fragment {
                 fbuttonMenu.close(true);
             }
         });
-        
+
         // Inflate the layout for this fragment
         return view;
     }
@@ -209,7 +209,7 @@ public class PR_Fragment_Detail extends Fragment {
                                     helper.delete();
                                     for (int i = 0; i < hasil.length(); i++) {
                                         JSONObject prdtl = hasil.getJSONObject(i);
-                                        long id = helper.insertData(prdtl.getString("branch"), prdtl.getString("docno"), prdtl.getString("no"), prdtl.getString("docref"), prdtl.getString("brgcode"), prdtl.getString("brgname"), prdtl.getString("brgdesc"), prdtl.getString("satcode"), prdtl.getString("qty"), prdtl.getString("sisastok"), prdtl.getString("iocode"), prdtl.getString("status"), prdtl.getString("statusdesc"), prdtl.getString("noref"), prdtl.getString("tglkirim"), prdtl.getString("approval"), prdtl.getString("userapproval"), prdtl.getString("statusold"));
+                                        long id = helper.insertData(prdtl.getString("branch"), prdtl.getString("docno"), prdtl.getString("no"), prdtl.getString("docref"), prdtl.getString("brgcode"), MainModule.getcharfromascii(prdtl.getString("brgname")), prdtl.getString("brgdesc"), prdtl.getString("satcode"), prdtl.getString("qty"), prdtl.getString("sisastok"), prdtl.getString("iocode"), prdtl.getString("status"), prdtl.getString("statusdesc"), prdtl.getString("noref"), prdtl.getString("tglkirim"), prdtl.getString("approval"), prdtl.getString("userapproval"), prdtl.getString("statusold"));
                                         if (id <= 0) {
                                             Toast toast = Toast.makeText(getActivity().getApplicationContext(), "Ada kesalahan load detail item", Toast.LENGTH_SHORT);
                                             toast.show();

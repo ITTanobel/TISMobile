@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.amulyakhare.textdrawable.util.ColorGenerator;
 import com.tanobel.it_yoga.tis_mobile.PR_Fragment_DetailJdw;
 import com.tanobel.it_yoga.tis_mobile.R;
+import com.tanobel.it_yoga.tis_mobile.util.MainModule;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +41,7 @@ public class PR_DtlJdw_RVAdapter extends RecyclerView.Adapter<PR_DtlJdw_RVAdapte
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
-        viewHolder.txt_nama_barang.setText(kt.get(position).getBrgname());
+        viewHolder.txt_nama_barang.setText(MainModule.getcharfromascii(kt.get(position).getBrgname()));
         viewHolder.txt_satuan.setText(kt.get(position).getSatcode());
         viewHolder.txt_qty.setText(kt.get(position).getQty());
         viewHolder.txt_tglkirim.setText(kt.get(position).getTglkirim());

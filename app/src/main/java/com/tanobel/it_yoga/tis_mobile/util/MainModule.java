@@ -38,4 +38,16 @@ public class MainModule extends Application {
     public void setUserTIS(String UserTIS) {
         this.UserTIS = UserTIS;
     }
+
+    public static String getcharfromascii(String s){
+        String str = "";
+        int ascii = 0;
+        String parts[] = s.split(",");
+        for(String part: parts) {
+            ascii = Integer.parseInt(String.valueOf(part));
+            str = str + (char) ascii;
+        }
+
+        return str;
+    }
 }
