@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
     ProgressBar pbbar;
     SharedPreferences shp;
 
-    //String URL = "http://192.168.0.17/tis-mobile/index.php";
+    //String URL = "http://172.16.16.17/tis-mobile/index.php";
     String URL = "https://www.tanobelfood.com/tis-mobile/index.php";
     String strjson, token;
     InternetConnection internetCon = new InternetConnection();
