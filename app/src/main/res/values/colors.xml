@@ -21,6 +21,9 @@
     <color name="retur_shape">#b31822e1</color>
     <color name="utility_shape">#009BB9</color>
     <color name="check_conn_shape">#749C01</color>
+    <color name="apv_gr_shape">#009688</color>
+    <color name="apv_gr_a1_shape">#7A4900</color>
+    <color name="apv_gr_a2_shape">#003D73</color>
 
     <color name="text_lgray">#808080</color>
     <color name="text_gray">#323232</color>

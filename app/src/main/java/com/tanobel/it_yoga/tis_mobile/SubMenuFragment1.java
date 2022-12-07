@@ -168,6 +168,21 @@ public class SubMenuFragment1 extends Fragment {
                         //mengeksekusi fragment transaction
 
                         break;
+                    case "APP03":
+                        SubMenuFragment2 subMenuFragmentGR2 = SubMenuFragment2.newSubInstance(Integer.toString(position), Menu_DataList.getCode());
+
+                        //buat object fragmentkedua
+                        getFragmentManager().beginTransaction()
+                                .replace(R.id.frame_content, subMenuFragmentGR2)
+                                //menggant fragment
+                                .addToBackStack(null)
+                                //menyimpan fragment
+                                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                                //transisi fragment
+                                .commit();
+                        //mengeksekusi fragment transaction
+
+                        break;
                     case "UBC01":
                         Intent j = new Intent(getActivity(), Unblock_SO.class);
                         j.putExtra("menu_name", "Unblock Sales Order");

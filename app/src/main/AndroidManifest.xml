@@ -122,6 +122,11 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:exported="true"/>
         <activity
+            android:name=".GoodsReceipt_View"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:exported="true"/>
+        <activity
             android:name=".PR_Detail"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme.NoActionBar"

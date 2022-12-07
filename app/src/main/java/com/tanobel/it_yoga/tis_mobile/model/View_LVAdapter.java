@@ -11,6 +11,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.tanobel.it_yoga.tis_mobile.GoodsReceipt_View;
 import com.tanobel.it_yoga.tis_mobile.Purchase_View;
 import com.tanobel.it_yoga.tis_mobile.Unblock_SO;
 import com.tanobel.it_yoga.tis_mobile.R;
@@ -124,6 +125,17 @@ public class View_LVAdapter extends BaseAdapter implements View.OnClickListener 
                     }
                 }
             }
+        }else if(tipe.equals("APV04") || tipe.equals("APV05")){
+            GoodsReceipt_View.dataList.clear();
+            if (charText.length() == 0) {
+                GoodsReceipt_View.dataList.addAll(GoodsReceipt_View.dataALL);
+            } else {
+                for (View_LVList wp : GoodsReceipt_View.dataALL) {
+                    if (wp.getDocno().toLowerCase(Locale.getDefault()).contains(charText)) {
+                        GoodsReceipt_View.dataList.add(wp);
+                    }
+                }
+            }
         } else {
             Purchase_View.dataList.clear();
             if (charText.length() == 0) {
@@ -143,6 +155,8 @@ public class View_LVAdapter extends BaseAdapter implements View.OnClickListener 
     public int getCount() {
         if (tipe.equals("UBCSO")) {
             return Unblock_SO.dataList.size();
+        } else if (tipe.equals("APV04") || tipe.equals("APV05")){
+            return GoodsReceipt_View.dataList.size();
         } else {
             return Purchase_View.dataList.size();
         }
@@ -152,6 +166,8 @@ public class View_LVAdapter extends BaseAdapter implements View.OnClickListener 
     public View_LVList getItem(int position) {
         if (tipe.equals("UBCSO")) {
              return Unblock_SO.dataList.get(position);
+        } else if (tipe.equals("APV04") || tipe.equals("APV05")){
+            return GoodsReceipt_View.dataList.get(position);
         } else {
             return Purchase_View.dataList.get(position);
         }
