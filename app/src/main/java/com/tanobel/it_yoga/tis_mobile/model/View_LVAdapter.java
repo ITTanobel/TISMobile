@@ -84,7 +84,9 @@ public class View_LVAdapter extends BaseAdapter implements View.OnClickListener 
         String firstLetter;
         if (tipe.equals("AppvPR")) {
             firstLetter = String.valueOf(unblockSO_dataList.getCode().charAt(0));
-        } else {
+        } else if (tipe.equals("AppvLPB") || tipe.equals("Appv2LPB")){
+            firstLetter = String.valueOf(unblockSO_dataList.getDocno().charAt(0));
+        }else {
             firstLetter = String.valueOf(unblockSO_dataList.getNama().charAt(0));
         }
 
@@ -125,7 +127,7 @@ public class View_LVAdapter extends BaseAdapter implements View.OnClickListener 
                     }
                 }
             }
-        }else if(tipe.equals("APV04") || tipe.equals("APV05")){
+        }else if(tipe.equals("AppvLPB") || tipe.equals("Appv2LPB")){
             GoodsReceipt_View.dataList.clear();
             if (charText.length() == 0) {
                 GoodsReceipt_View.dataList.addAll(GoodsReceipt_View.dataALL);
@@ -155,7 +157,7 @@ public class View_LVAdapter extends BaseAdapter implements View.OnClickListener 
     public int getCount() {
         if (tipe.equals("UBCSO")) {
             return Unblock_SO.dataList.size();
-        } else if (tipe.equals("APV04") || tipe.equals("APV05")){
+        } else if (tipe.equals("AppvLPB") || tipe.equals("Appv2LPB")){
             return GoodsReceipt_View.dataList.size();
         } else {
             return Purchase_View.dataList.size();
@@ -166,7 +168,7 @@ public class View_LVAdapter extends BaseAdapter implements View.OnClickListener 
     public View_LVList getItem(int position) {
         if (tipe.equals("UBCSO")) {
              return Unblock_SO.dataList.get(position);
-        } else if (tipe.equals("APV04") || tipe.equals("APV05")){
+        } else if (tipe.equals("AppvLPB") || tipe.equals("Appv2LPB")){
             return GoodsReceipt_View.dataList.get(position);
         } else {
             return Purchase_View.dataList.get(position);

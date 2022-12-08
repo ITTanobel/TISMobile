@@ -137,6 +137,11 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:exported="true"/>
         <activity
+            android:name=".GR_Detail"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:exported="true"/>
+        <activity
             android:name=".ScanAsset_Activity"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme.NoActionBar"
