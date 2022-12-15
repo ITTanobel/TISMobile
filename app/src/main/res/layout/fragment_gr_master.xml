@@ -21,6 +21,54 @@
             android:layout_marginBottom="5dp"
             android:background="#FFFFFF"
             android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:background="#dcdcdc"
+                android:text="Supplier" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/kode_supplier"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Kode Supplier"
+                    android:singleLine="true"
+                    android:textColorLink="@android:color/darker_gray"
+                    android:textSize="16sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/nama_supplier"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nama Supplier"
+                    android:singleLine="true"
+                    android:textColorLink="@android:color/darker_gray"
+                    android:textSize="16sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/alamat_supplier"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Alamat Supplier"
+                    android:singleLine="true"
+                    android:textColorLink="@android:color/darker_gray"
+                    android:textSize="16sp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:layout_width="match_parent"
@@ -28,13 +76,12 @@
                 android:layout_marginBottom="5dp"
                 android:background="#dcdcdc"
                 android:text="Header" />
-
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/txtplant"
+                    android:id="@+id/plant"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Plant"
@@ -42,16 +89,15 @@
                     android:textColorLink="@android:color/darker_gray"
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
-
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/txttipeorder"
+                    android:id="@+id/nama_plant"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Tipe Order"
+                    android:hint="Nama Plant"
                     android:singleLine="true"
                     android:textColorLink="@android:color/darker_gray"
                     android:textSize="16sp" />
@@ -62,7 +108,21 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/txttipe"
+                    android:id="@+id/status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Status"
+                    android:singleLine="true"
+                    android:textColorLink="@android:color/darker_gray"
+                    android:textSize="16sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/nama_tipe"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Tipe"
@@ -76,7 +136,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/txtap"
+                    android:id="@+id/pembayaran"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Pembayaran"
@@ -85,109 +145,14 @@
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <RelativeLayout
+            <EditText
+                android:id="@+id/tgl_posting"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/txtlayoutincppn"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content">
-
-                    <EditText
-                        android:id="@+id/txtincppn"
-                        android:layout_width="150dp"
-                        android:layout_height="wrap_content"
-                        android:hint="Include PPN"
-                        android:singleLine="true"
-                        android:textColorLink="@android:color/darker_gray"
-                        android:textSize="16sp" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <Switch
-                    android:id="@+id/swcincppn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_toEndOf="@id/txtlayoutincppn"
-                    android:layout_toRightOf="@id/txtlayoutincppn" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/txtlayoutppn"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content">
-
-                    <EditText
-                        android:id="@+id/txtppn"
-                        android:layout_width="150dp"
-                        android:layout_height="wrap_content"
-                        android:hint="PPN"
-                        android:singleLine="true"
-                        android:textColorLink="@android:color/darker_gray"
-                        android:textSize="16sp" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <Switch
-                    android:id="@+id/swcppn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_toEndOf="@id/txtlayoutppn"
-                    android:layout_toRightOf="@id/txtlayoutppn" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/txtlayoutsp"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content">
-
-                    <EditText
-                        android:id="@+id/txtsp"
-                        android:layout_width="150dp"
-                        android:layout_height="wrap_content"
-                        android:hint="Sparepart"
-                        android:singleLine="true"
-                        android:textColorLink="@android:color/darker_gray"
-                        android:textSize="16sp" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <Switch
-                    android:id="@+id/swcsp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_toEndOf="@id/txtlayoutsp"
-                    android:layout_toRightOf="@id/txtlayoutsp" />
-            </RelativeLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/txtket"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Keterangan"
-                    android:singleLine="true"
-                    android:textColorLink="@android:color/darker_gray"
-                    android:textSize="16sp" />
-            </com.google.android.material.textfield.TextInputLayout>
+                android:layout_height="wrap_content"
+                android:hint="Tanggal Posting"
+                android:singleLine="true"
+                android:textColorLink="@android:color/darker_gray"
+                android:textSize="16sp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -201,35 +166,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/txttgldoc"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Tanggal Dokumen"
-                    android:singleLine="true"
-                    android:textColorLink="@android:color/darker_gray"
-                    android:textSize="16sp" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/txttglpost"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Tanggal Posting"
-                    android:singleLine="true"
-                    android:textColorLink="@android:color/darker_gray"
-                    android:textSize="16sp" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/txttglinput"
+                    android:id="@+id/tgl_input"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Tanggal Input"
@@ -242,11 +179,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
                 <EditText
-                    android:id="@+id/txtinputby"
+                    android:id="@+id/diinput_oleh"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Input Oleh"
+                    android:hint="Diinput Oleh"
                     android:singleLine="true"
                     android:textColorLink="@android:color/darker_gray"
                     android:textSize="16sp" />
@@ -264,7 +207,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/txtstatus1"
+                    android:id="@+id/tgl_approve1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Approve 1 Tanggal"
@@ -278,7 +221,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/txtapprove1"
+                    android:id="@+id/approve1_oleh"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Approve 1 Oleh"
@@ -292,7 +235,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/txtstatus2"
+                    android:id="@+id/tgl_approve2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Approve 2 Tanggal"
@@ -306,7 +249,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/txtapprove2"
+                    android:id="@+id/approve2_oleh"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Approve 2 Oleh"
@@ -320,17 +263,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:background="#dcdcdc"
-                android:text="Supplier" />
+                android:text="Data Organisasi Dan Jumlah" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/txtsuppcode"
+                    android:id="@+id/no_po"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Kode Supplier"
+                    android:hint="No. PO"
                     android:singleLine="true"
                     android:textColorLink="@android:color/darker_gray"
                     android:textSize="16sp" />
@@ -341,10 +284,10 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/txtsuppname"
+                    android:id="@+id/order_po"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Nama Supplier"
+                    android:hint="Order PO"
                     android:singleLine="true"
                     android:textColorLink="@android:color/darker_gray"
                     android:textSize="16sp" />
@@ -355,31 +298,10 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/txtsuppalamat"
+                    android:id="@+id/nama_gudang"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Alamat Supplier"
-                    android:singleLine="true"
-                    android:textColorLink="@android:color/darker_gray"
-                    android:textSize="16sp" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:background="#dcdcdc"
-                android:text="Data Organisasi" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/txtpurchorg"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Purch. Org"
+                    android:hint="Gudang"
                     android:singleLine="true"
                     android:textColorLink="@android:color/darker_gray"
                     android:textSize="16sp" />
@@ -390,43 +312,79 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/txtdiserahkan"
+                    android:id="@+id/no_faktur_sj"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Diserahkan"
+                    android:hint="No. Fkt/SJ"
                     android:singleLine="true"
                     android:textColorLink="@android:color/darker_gray"
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
-
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/txtalmtdiserahkan"
+                    android:id="@+id/no_ekspedisi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Alamat"
+                    android:hint="No. Ekspedisi"
                     android:singleLine="true"
                     android:textColorLink="@android:color/darker_gray"
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
-
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/txtkotadiserahkan"
+                    android:id="@+id/no_container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Kota"
+                    android:hint="No. Container"
                     android:singleLine="true"
                     android:textColorLink="@android:color/darker_gray"
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
+                <EditText
+                    android:id="@+id/tgl_sj_supplier"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Tanggal SJ Supplier"
+                    android:singleLine="true"
+                    android:textColorLink="@android:color/darker_gray"
+                    android:textSize="16sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/tgl_penerimaan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Tanggal Penerimaan Barang"
+                    android:singleLine="true"
+                    android:textColorLink="@android:color/darker_gray"
+                    android:textSize="16sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/keterangan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Keterangan"
+                    android:singleLine="true"
+                    android:textColorLink="@android:color/darker_gray"
+                    android:textSize="16sp" />
+            </com.google.android.material.textfield.TextInputLayout>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -439,7 +397,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/txtmu"
+                    android:id="@+id/mata_uang"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Mata Uang"
@@ -453,98 +411,20 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/txtrate"
+                    android:id="@+id/top"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Rate"
+                    android:hint="TOP"
                     android:singleLine="true"
                     android:textColorLink="@android:color/darker_gray"
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
+            <Button
+                android:id="@+id/view_image_btn"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/txttop"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="T.O.P"
-                    android:singleLine="true"
-                    android:textColorLink="@android:color/darker_gray"
-                    android:textSize="16sp" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/txtbrutto"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Brutto"
-                    android:singleLine="true"
-                    android:textColorLink="@android:color/darker_gray"
-                    android:textSize="16sp" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/txtdisc"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Disc"
-                    android:singleLine="true"
-                    android:textColorLink="@android:color/darker_gray"
-                    android:textSize="16sp" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/txtdpp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="DPP"
-                    android:singleLine="true"
-                    android:textColorLink="@android:color/darker_gray"
-                    android:textSize="16sp" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/txtmppn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="PPn"
-                    android:singleLine="true"
-                    android:textColorLink="@android:color/darker_gray"
-                    android:textSize="16sp" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/txtnetto"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Netto"
-                    android:singleLine="true"
-                    android:textColorLink="@android:color/darker_gray"
-                    android:textSize="16sp" />
-            </com.google.android.material.textfield.TextInputLayout>
+                android:layout_height="wrap_content"
+                android:text="View Image SJ" />
 
         </LinearLayout>
     </ScrollView>

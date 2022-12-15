@@ -2,46 +2,98 @@ package com.tanobel.it_yoga.tis_mobile.model;
 
 public class GR_Mst {
 
-    private String branch, pono, plant, poorder, poorderdesc, tipe, ap, incppn, ppn, sp, status1, releaseby1, status2, releaseby, docdate, postdate, inputdate, inputby, btskirim, suppcode, suppname, suppaddress, keterangan, company, brcode, alamatbr, kotabr, mucode, rate, top, brutto, disc, dpp, mppn, netto;
+    private String kode_supplier,nama_supplier,alamat_supplier,kota_supplier,
+        branch,status,nama_plant,tipe,nama_tipe,pembayaran,tgl_input,diinput_oleh,
+        tgl_approve1,approve1_oleh,tgl_approve2,approve2_oleh,tgl_posting,keterangan,mata_uang,ntop,tgl_penerimaan,
+            tgl_sj_supplier,no_container,no_ekspedisi,no_faktur_sj,nama_gudang,order_po,no_po
+            ;
 
-    public String getBranch() {
-        return branch;
+    public String getKode_supplier() {
+        return kode_supplier;
     }
 
-    public void setBranch(String branch) {
-        this.branch = branch;
+    public void setKode_supplier(String kode_supplier) {
+        this.kode_supplier = kode_supplier;
     }
 
-    public String getPono() {
-        return pono;
+    public String getNama_supplier() {
+        return nama_supplier;
     }
 
-    public void setPono(String pono) {
-        this.pono = pono;
+    public void setNama_supplier(String nama_supplier) {
+        this.nama_supplier = nama_supplier;
     }
 
-    public String getPlant() {
-        return plant;
+    public String getAlamat_supplier() {
+        return alamat_supplier;
     }
 
-    public void setPlant(String plant) {
-        this.plant = plant;
+    public void setAlamat_supplier(String alamat_supplier) {
+        this.alamat_supplier = alamat_supplier;
     }
 
-    public String getPoorderdesc() {
-        return poorderdesc;
+    public String getKota_supplier() {
+        return kota_supplier;
     }
 
-    public void setPoorderdesc(String poorderdesc) {
-        this.poorderdesc = poorderdesc;
+    public void setKota_supplier(String kota_supplier) {
+        this.kota_supplier = kota_supplier;
     }
 
-    public String getPoorder() {
-        return poorder;
+    public String getNama_plant() {
+        return nama_plant;
     }
 
-    public void setPoorder(String poorder) {
-        this.poorder = poorder;
+    public void setNama_plant(String nama_plant) {
+        this.nama_plant = nama_plant;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getApprove1_oleh() {
+        return approve1_oleh;
+    }
+
+    public void setApprove1_oleh(String approve1_oleh) {
+        this.approve1_oleh = approve1_oleh;
+    }
+
+    public String getApprove2_oleh() {
+        return approve2_oleh;
+    }
+
+    public void setApprove2_oleh(String approve2_oleh) {
+        this.approve2_oleh = approve2_oleh;
+    }
+
+    public String getDiinput_oleh() {
+        return diinput_oleh;
+    }
+
+    public void setDiinput_oleh(String diinput_oleh) {
+        this.diinput_oleh = diinput_oleh;
+    }
+
+    public String getNama_tipe() {
+        return nama_tipe;
+    }
+
+    public void setNama_tipe(String nama_tipe) {
+        this.nama_tipe = nama_tipe;
+    }
+
+    public String getPembayaran() {
+        return pembayaran;
+    }
+
+    public void setPembayaran(String pembayaran) {
+        this.pembayaran = pembayaran;
     }
 
     public String getTipe() {
@@ -52,133 +104,44 @@ public class GR_Mst {
         this.tipe = tipe;
     }
 
-    public String getAp() {
-        return ap;
+    public String getTgl_approve1() {
+        return tgl_approve1;
     }
 
-    public void setAp(String ap) {
-        this.ap = ap;
+    public void setTgl_approve1(String tgl_approve1) {
+        this.tgl_approve1 = tgl_approve1;
     }
 
-    public String getIncppn() {
-        return incppn;
+    public String getTgl_approve2() {
+        return tgl_approve2;
     }
 
-    public void setIncppn(String incppn) {
-        this.incppn = incppn;
+    public void setTgl_approve2(String tgl_approve2) {
+        this.tgl_approve2 = tgl_approve2;
     }
 
-     public String getPpn() {
-        return ppn;
+    public String getTgl_input() {
+        return tgl_input;
     }
 
-    public void setPpn(String ppn) {
-        this.ppn = ppn;
+    public void setTgl_input(String tgl_input) {
+        this.tgl_input = tgl_input;
     }
 
-    public String getSp() {
-        return sp;
+    public String getTgl_posting() {
+        return tgl_posting;
     }
 
-    public void setSp(String sp) {
-        this.sp = sp;
+    public void setTgl_posting(String tgl_posting) {
+        this.tgl_posting = tgl_posting;
     }
 
-
-    public String getStatus1() {
-        return status1;
+    public String getBranch() {
+        return branch;
     }
 
-    public void setStatus1(String status1) {
-        this.status1 = status1;
-    }
-
-    public String getReleaseby1() {
-        return releaseby1;
-    }
-
-    public void setReleaseby1(String releaseby1) {
-        this.releaseby1 = releaseby1;
-    }
-
-    public String getStatus2() {
-        return status2;
-    }
-
-    public void setStatus2(String status2) {
-        this.status2 = status2;
-    }
-
-    public String getReleaseby() {
-        return releaseby;
-    }
-
-    public void setReleaseby(String releaseby) {
-        this.releaseby = releaseby;
-    }
-
-    public String getDocdate() {
-        return docdate;
-    }
-
-    public void setDocdate(String docdate) {
-        this.docdate = docdate;
-    }
-
-    public String getPostdate() {
-        return postdate;
-    }
-
-    public void setPostdate(String postdate) {
-        this.postdate = postdate;
-    }
-
-    public String getInputdate() {
-        return inputdate;
-    }
-
-    public void setInputdate(String inputdate) {
-        this.inputdate = inputdate;
-    }
-
-    public String getInputby() {
-        return inputby;
-    }
-
-    public void setInputby(String inputby) {
-        this.inputby = inputby;
-    }
-
-    public String getBtskirimtskirim() {
-        return btskirim;
-    }
-
-    public void setBtskirim(String btskirim) {
-        this.btskirim = btskirim;
-    }
-
-    public String getSuppcode() {
-        return suppcode;
-    }
-
-    public void setSuppcode(String suppcode) {
-        this.suppcode = suppcode;
-    }
-
-    public String getSuppname() {
-        return suppname;
-    }
-
-    public void setSuppname(String suppname) {
-        this.suppname = suppname;
-    }
-
-    public String getSuppaddress() {
-        return suppaddress;
-    }
-
-    public void setSuppaddress(String suppaddress) {
-        this.suppaddress = suppaddress;
+    public void setBranch(String branch) {
+        this.branch = branch;
     }
 
     public String getKeterangan() {
@@ -189,101 +152,83 @@ public class GR_Mst {
         this.keterangan = keterangan;
     }
 
-    public String getCompany() {
-        return company;
+    public String getMata_uang() {
+        return mata_uang;
     }
 
-    public void setCompany(String company) {
-        this.company = company;
+    public void setMata_uang(String mata_uang) {
+        this.mata_uang = mata_uang;
     }
 
-
-    public String getBrcode() {
-        return brcode;
+    public String getNtop() {
+        return ntop;
     }
 
-    public void setBrcode(String brcode) {
-        this.brcode = brcode;
+    public void setNtop(String ntop) {
+        this.ntop = ntop;
     }
 
-    public String getAlamatbr() {
-        return alamatbr;
+    public String getNama_gudang() {
+        return nama_gudang;
     }
 
-    public void setAlamatbr(String alamatbr) {
-        this.alamatbr = alamatbr;
+    public void setNama_gudang(String nama_gudang) {
+        this.nama_gudang = nama_gudang;
     }
 
-    public String getKotabr() {
-        return kotabr;
+    public String getNo_container() {
+        return no_container;
     }
 
-    public void setKotabr(String kotabr) {
-        this.kotabr = kotabr;
+    public void setNo_container(String no_container) {
+        this.no_container = no_container;
     }
 
-    public String getMucode() {
-        return mucode;
+    public String getNo_ekspedisi() {
+        return no_ekspedisi;
     }
 
-    public void setMucode(String mucode) {
-        this.mucode = mucode;
+    public void setNo_ekspedisi(String no_ekspedisi) {
+        this.no_ekspedisi = no_ekspedisi;
     }
 
-    public String getRate() {
-        return rate;
+    public String getNo_faktur_sj() {
+        return no_faktur_sj;
     }
 
-    public void setRate(String rate) {
-        this.rate = rate;
+    public void setNo_faktur_sj(String no_faktur_sj) {
+        this.no_faktur_sj = no_faktur_sj;
     }
 
-    public String getTop() {
-        return top;
+    public String getNo_po() {
+        return no_po;
     }
 
-    public void setTop(String top) {
-        this.top = top;
+    public void setNo_po(String no_po) {
+        this.no_po = no_po;
     }
 
-    public String getBrutto() {
-        return brutto;
+    public String getOrder_po() {
+        return order_po;
     }
 
-    public void setBrutto(String brutto) {
-        this.brutto = brutto;
+    public void setOrder_po(String order_po) {
+        this.order_po = order_po;
     }
 
-    public String getDisc() {
-        return disc;
+    public String getTgl_penerimaan() {
+        return tgl_penerimaan;
     }
 
-    public void setDisc(String disc) {
-        this.disc = disc;
+    public void setTgl_penerimaan(String tgl_penerimaan) {
+        this.tgl_penerimaan = tgl_penerimaan;
     }
 
-    public String getDpp() {
-        return dpp;
+    public String getTgl_sj_supplier() {
+        return tgl_sj_supplier;
     }
 
-    public void setDpp(String dpp) {
-        this.dpp = dpp;
+    public void setTgl_sj_supplier(String tgl_sj_supplier) {
+        this.tgl_sj_supplier = tgl_sj_supplier;
     }
-
-    public String getMppn() {
-        return mppn;
-    }
-
-    public void setMppn(String mppn) {
-        this.mppn = mppn;
-    }
-
-    public String getNetto() {
-        return netto;
-    }
-
-    public void setNetto(String netto) {
-        this.netto = netto;
-    }
-
 }

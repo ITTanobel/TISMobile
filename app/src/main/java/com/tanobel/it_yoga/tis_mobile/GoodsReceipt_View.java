@@ -81,7 +81,7 @@ public class GoodsReceipt_View<onCreate> extends AppCompatActivity implements Se
         pDialog.setCancelable(true);
 
         textdtl = findViewById(R.id.text_view_dtl);
-        textdtl.setText("Detail PO");
+        textdtl.setText("Detail GR");
 
         spnposusrplant = 0;
         spnusrplant = findViewById(R.id.spn_plant_view);

@@ -16,12 +16,13 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.tanobel.it_yoga.tis_mobile.model.Db_PO;
-import com.tanobel.it_yoga.tis_mobile.model.PO_Dtl;
+import com.tanobel.it_yoga.tis_mobile.model.Db_GR;
+import com.tanobel.it_yoga.tis_mobile.model.GR_Dtl;
 import com.tanobel.it_yoga.tis_mobile.model.Purchase_PageAdapter;
 import com.tanobel.it_yoga.tis_mobile.util.InternetConnection;
 import com.tanobel.it_yoga.tis_mobile.util.MainModule;
 import com.tanobel.it_yoga.tis_mobile.util.RequestPost;
+import com.tanobel.it_yoga.tis_mobile.util.RequestPostLumen;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -37,19 +38,19 @@ import okhttp3.Response;
  * Created by Galeh on 08/12/2022.
  */
 public class GR_Detail extends AppCompatActivity {
-    private RequestPost RP;
+    private RequestPostLumen RP;
     InternetConnection internetCon = new InternetConnection();
 
     Purchase_PageAdapter pagerAdapter;
     ViewPager vp;
     TabLayout tabLayout;
     TextView textTitle, textSubTitle;
-    String menutype, plant, custcode, tipe,user;
+    String menutype, plant, custcode, tipe,user,segment;
     ImageButton btnsave;
     ProgressDialog pDialog;
     Boolean sendemail;
 
-    Db_PO helper;
+    Db_GR helper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,8 +63,8 @@ public class GR_Detail extends AppCompatActivity {
         textSubTitle = findViewById(R.id.txt_smp_dtl_subtitle);
         btnsave = findViewById(R.id.btn_gr_save);
         user = ((MainModule) getApplicationContext()).getUserTIS();
-        helper = new Db_PO(this);
-        this.deleteDatabase("DbPO");
+        helper = new Db_GR(this);
+        this.deleteDatabase("DbGR");
 
         pDialog = new ProgressDialog(GR_Detail.this);
         pDialog.setMessage("Please wait....");
@@ -83,7 +84,11 @@ public class GR_Detail extends AppCompatActivity {
             getSupportActionBar().setTitle("");
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
-
+        if (menutype.equals("AppvLPB")){
+            segment = "approval1.lpb.do_approve";
+        }else if (menutype.equals("Appv2LPB")){
+            segment = "approval2.lpb.do_approve";
+        }
         //VIEWPAGER
         vp = findViewById(R.id.pager_gr);
         this.addPages();
@@ -97,8 +102,8 @@ public class GR_Detail extends AppCompatActivity {
         btnsave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                List<PO_Dtl> itemList = helper.getDataByStatusOld();
-                if (menutype.equals("AppvPO") && itemList.size() > 0) {
+                List<GR_Dtl> itemList = helper.getDataAll();
+                if (menutype.equals("AppvGR") && itemList.size() > 0) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(GR_Detail.this);
                     builder.setMessage("Masih ada item yang belum diapprove / dicancel.")
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -205,58 +210,30 @@ public class GR_Detail extends AppCompatActivity {
     void updateData() {
 
         Fragment page = pagerAdapter.getRegisteredFragment(0);
-        final PO_Fragment_Master fpomaster = (PO_Fragment_Master) page;
+        final GR_Fragment_Master fpomaster = (GR_Fragment_Master) page;
 
-        List<PO_Dtl> ItemListMst;
-        if (menutype.equals("AppvPO")) {
-            if (helper.getDataGroupByStatus().size() > 0) {
-                ItemListMst = helper.getDataGroupByStatus();
-            } else {
-                ItemListMst = helper.getDataGroupByStatusCancel();
-            }
-        } else {
-            ItemListMst = helper.getDataGroupByStatusRelease();
-        }
-        List<PO_Dtl> ItemListDtl = helper.getDataAll();
+        List<GR_Dtl> ItemListMst;
+        List<GR_Dtl> ItemListDtl = helper.getDataAll();
 
         if (internetCon.checkConnection(getApplicationContext())) {
-            RequestPost RP;
+            RequestPostLumen RP;
             if (!isFinishing()) {
                 pDialog.show();
             }
             try {
                 JSONObject json = new JSONObject();
                 json.put("menutype", menutype);
-
-                JSONArray arrmst = new JSONArray();
-                for (int h = 0; h < ItemListMst.size(); h++) {
-                    JSONObject datamst = new JSONObject();
-                    PO_Dtl itemmst = ItemListMst.get(h);
-                    datamst.put("user", ((MainModule) getApplicationContext()).getUserTIS());
-                    datamst.put("branch", itemmst.getBranch());
-                    datamst.put("docno", itemmst.getDocno());
-                    datamst.put("tipe", tipe);
-                    datamst.put("tipeorder", fpomaster.tipeorder);
-                    datamst.put("status", itemmst.getStatus());
-                    datamst.put("sendemail", sendemail);
-                    arrmst.put(datamst);
-                }
-                json.put("datamst", arrmst);
-
                 JSONArray arrdtl = new JSONArray();
                 for (int i = 0; i < ItemListDtl.size(); i++) {
                     JSONObject datadtl = new JSONObject();
-                    PO_Dtl itemdtl = ItemListDtl.get(i);
+                    GR_Dtl itemdtl = ItemListDtl.get(i);
                     datadtl.put("branch", itemdtl.getBranch());
                     datadtl.put("docno", itemdtl.getDocno());
-                    datadtl.put("no", itemdtl.getNo());
-                    datadtl.put("tipe", tipe);
-                    datadtl.put("status", itemdtl.getStatus());
                     arrdtl.put(datadtl);
                 }
                 json.put("datadtl", arrdtl);
 
-                RP = new RequestPost("classes/Purchase_Update.php", json, getApplicationContext());
+                RP = new RequestPostLumen(segment, json, getApplicationContext());
                 RP.execPostCall(new Callback() {
                     @Override
                     public void onFailure(Call call, IOException e) {

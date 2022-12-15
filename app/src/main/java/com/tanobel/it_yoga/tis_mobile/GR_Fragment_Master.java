@@ -2,12 +2,14 @@ package com.tanobel.it_yoga.tis_mobile;
 
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
@@ -37,12 +39,10 @@ import okhttp3.Response;
 public class GR_Fragment_Master extends Fragment {
     private RequestPostLumen RP;
     InternetConnection internetCon = new InternetConnection();
-    EditText txtplant,txttipeorder,txttipe,txtap,txtincppn,txtppn,txtsp,txtket,txttgldoc,txttglpost,txttglinput,txtinputby;
-    EditText txtbtskirim,txtstatus1,txtapprove1,txtstatus2,txtapprove2,txtsuppcode,txtsuppname,txtsuppalamat,txtpurchorg;
-    EditText txtdiserahkan,txtalmtdiserahkan,txtkotadiserahkan,txtmu,txtrate,txttop,txtbrutto,txtdisc,txtdpp,txtmppn,txtnetto;
-    Switch swcincppn, swcppn, swcsp;
+    EditText kode_supplier,nama_supplier,alamat_supplier,branch,nama_plant,status,nama_tipe,pembayaran,keterangan,tgl_input,tgl_posting,diinput_oleh,tgl_approve1,approve1_oleh,tgl_approve2,approve2_oleh,no_po,order_po,nama_gudang,no_faktur_sj,no_ekspedisi,no_container,tgl_sj_supplier,tgl_penerimaan,mata_uang,top;
     ProgressDialog pDialog;
-    String plant, docno, tipe, tipeorder,user;
+    String plant, docno, tipe, tipeorder,user,menutype,segment;
+    Button view_image;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -60,79 +60,77 @@ public class GR_Fragment_Master extends Fragment {
         docno = grdetail.textTitle.getText().toString();
         tipe = grdetail.tipe;
         user = grdetail.user;
-
-        txtplant = view.findViewById(R.id.txtplant);
-        txttipeorder = view.findViewById(R.id.txttipeorder);
-        txttipe = view.findViewById(R.id.txttipe);
-        txtap = view.findViewById(R.id.txtap);
-        txtincppn = view.findViewById(R.id.txtincppn);
-        txtppn = view.findViewById(R.id.txtppn);
-        txtsp = view.findViewById(R.id.txtsp);
-        txtket = view.findViewById(R.id.txtket);
-        txttgldoc = view.findViewById(R.id.txttgldoc);
-        txttglpost = view.findViewById(R.id.txttglpost);
-        txttglinput = view.findViewById(R.id.txttglinput);
-        txtinputby = view.findViewById(R.id.txtinputby);
-        txtstatus1 = view.findViewById(R.id.txtstatus1);
-        txtapprove1 = view.findViewById(R.id.txtapprove1);
-        txtstatus2 = view.findViewById(R.id.txtstatus2);
-        txtapprove2 = view.findViewById(R.id.txtapprove2);
-        txtsuppcode = view.findViewById(R.id.txtsuppcode);
-        txtsuppname = view.findViewById(R.id.txtsuppname);
-        txtsuppalamat = view.findViewById(R.id.txtsuppalamat);
-        txtpurchorg = view.findViewById(R.id.txtpurchorg);
-        txtdiserahkan = view.findViewById(R.id.txtdiserahkan);
-        txtalmtdiserahkan = view.findViewById(R.id.txtalmtdiserahkan);
-        txtkotadiserahkan = view.findViewById(R.id.txtkotadiserahkan);
-        txtmu = view.findViewById(R.id.txtmu);
-        txtrate = view.findViewById(R.id.txtrate);
-        txttop = view.findViewById(R.id.txttop);
-        txtbrutto = view.findViewById(R.id.txtbrutto);
-        txtdisc = view.findViewById(R.id.txtdisc);
-        txtdpp = view.findViewById(R.id.txtdpp);
-        txtmppn = view.findViewById(R.id.txtmppn);
-        txtnetto = view.findViewById(R.id.txtnetto);
-        swcincppn = view.findViewById(R.id.swcincppn);
-        swcppn = view.findViewById(R.id.swcppn);
-        swcsp = view.findViewById(R.id.swcsp);
-
-        txtplant.setFocusable(false);
-        txttipeorder.setFocusable(false);
-        txttipe.setFocusable(false);
-        txtap.setFocusable(false);
-        txtincppn.setFocusable(false);
-        txtppn.setFocusable(false);
-        txtsp.setFocusable(false);
-        txtket.setFocusable(false);
-        txttgldoc.setFocusable(false);
-        txttglpost.setFocusable(false);
-        txttglinput.setFocusable(false);
-        txtinputby.setFocusable(false);
-        txtstatus1.setFocusable(false);
-        txtapprove1.setFocusable(false);
-        txtstatus2.setFocusable(false);
-        txtapprove2.setFocusable(false);
-        txtsuppcode.setFocusable(false);
-        txtsuppname.setFocusable(false);
-        txtsuppalamat.setFocusable(false);
-        txtpurchorg.setFocusable(false);
-        txtdiserahkan.setFocusable(false);
-        txtalmtdiserahkan.setFocusable(false);
-        txtkotadiserahkan.setFocusable(false);
-        txtmu.setFocusable(false);
-        txtrate.setFocusable(false);
-        txttop.setFocusable(false);
-        txtbrutto.setFocusable(false);
-        txtdisc.setFocusable(false);
-        txtdpp.setFocusable(false);
-        txtmppn.setFocusable(false);
-        txtnetto.setFocusable(false);
-        swcincppn.setClickable(false);
-        swcppn.setClickable(false);
-        swcsp.setClickable(false);
-
+        menutype = grdetail.menutype;
+        if (menutype.equals("AppvLPB")){
+            segment = "approval1.lpb.view_one";
+        }else if (menutype.equals("Appv2LPB")){
+            segment = "approval2.lpb.view_one";
+        }
+        kode_supplier = view.findViewById(R.id.kode_supplier);
+        nama_supplier = view.findViewById(R.id.nama_supplier);
+        alamat_supplier = view.findViewById(R.id.alamat_supplier);
+        branch = view.findViewById(R.id.plant);
+        nama_plant = view.findViewById(R.id.nama_plant);
+        status = view.findViewById(R.id.status);
+        nama_tipe = view.findViewById(R.id.nama_tipe);
+        pembayaran = view.findViewById(R.id.pembayaran);
+        keterangan = view.findViewById(R.id.keterangan);
+        tgl_input = view.findViewById(R.id.tgl_input);
+        tgl_posting = view.findViewById(R.id.tgl_posting);
+        diinput_oleh = view.findViewById(R.id.diinput_oleh);
+        tgl_approve1 = view.findViewById(R.id.tgl_approve1);
+        approve1_oleh = view.findViewById(R.id.approve1_oleh);
+        tgl_approve2 = view.findViewById(R.id.tgl_approve2);
+        approve2_oleh = view.findViewById(R.id.approve2_oleh);
+        no_po = view.findViewById(R.id.no_po);
+        order_po = view.findViewById(R.id.order_po);
+        nama_gudang = view.findViewById(R.id.nama_gudang);
+        no_faktur_sj = view.findViewById(R.id.no_faktur_sj);
+        no_ekspedisi = view.findViewById(R.id.no_ekspedisi);
+        no_container = view.findViewById(R.id.no_container);
+        tgl_sj_supplier = view.findViewById(R.id.tgl_sj_supplier);
+        tgl_penerimaan = view.findViewById(R.id.tgl_penerimaan);
+        mata_uang = view.findViewById(R.id.mata_uang);
+        top = view.findViewById(R.id.top);
+        view_image = view.findViewById(R.id.view_image_btn);
+        //set to false focusable
+        kode_supplier.setFocusable(false);
+        nama_supplier.setFocusable(false);
+        alamat_supplier.setFocusable(false);
+        branch.setFocusable(false);
+        nama_plant.setFocusable(false);
+        status.setFocusable(false);
+        nama_tipe.setFocusable(false);
+        pembayaran.setFocusable(false);
+        keterangan.setFocusable(false);
+        tgl_input.setFocusable(false);
+        tgl_posting.setFocusable(false);
+        diinput_oleh.setFocusable(false);
+        tgl_approve1.setFocusable(false);
+        approve1_oleh.setFocusable(false);
+        tgl_approve2.setFocusable(false);
+        approve2_oleh.setFocusable(false);
+        no_po.setFocusable(false);
+        order_po.setFocusable(false);
+        nama_gudang.setFocusable(false);
+        no_faktur_sj.setFocusable(false);
+        no_ekspedisi.setFocusable(false);
+        no_container.setFocusable(false);
+        tgl_sj_supplier.setFocusable(false);
+        tgl_penerimaan.setFocusable(false);
+        mata_uang.setFocusable(false);
+        top.setFocusable(false);
         getGRMaster(view);
-
+        view_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent j = new Intent(getActivity(),View_image.class);
+                j.putExtra("docno", docno);
+                j.putExtra("plant", plant);
+                j.putExtra("user", user);
+                startActivity(j);
+            }
+        });
         // Inflate the layout for this fragment
         return view;
     }
@@ -142,20 +140,21 @@ public class GR_Fragment_Master extends Fragment {
             if (!isRemoving()) {
                 pDialog.show();
             }
+
             try {
                 JSONObject json = new JSONObject();
-                JSONObject data = new JSONObject();
                 try {
                     json = new JSONObject();
-                    json.put("plant", plant);
+                    json.put("param", "master");
                     json.put("docno", docno);
+                    json.put("plant", plant);
                     json.put("username", user);
                     Log.i("JSON nya", json.toString());
                 } catch (JSONException e) {
                     if (pDialog != null) pDialog.dismiss();
                     e.printStackTrace();
                 }
-                RP = new RequestPostLumen("approval2.lpb.view_one", json, getActivity().getApplicationContext());
+                RP = new RequestPostLumen(segment, json, getActivity().getApplicationContext());
                 RP.execPostCall(new Callback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
@@ -181,61 +180,32 @@ public class GR_Fragment_Master extends Fragment {
 
                                     for (int i = 0; i < item.size(); i++) {
                                         GR_Mst item_master = item.get(i);
-                                        txtplant.setText(item_master.getPlant());
-                                        txttipeorder.setText(item_master.getPoorderdesc());
-                                        txttipe.setText(item_master.getTipe());
-                                        txtap.setText(item_master.getAp());
-                                        txtket.setText(item_master.getKeterangan());
-                                        txttgldoc.setText(item_master.getDocdate());
-                                        txttglpost.setText(item_master.getPostdate());
-                                        txttglinput.setText(item_master.getInputdate());
-                                        txtinputby.setText(item_master.getInputby());
-                                        txtstatus1.setText(item_master.getStatus1());
-                                        txtapprove1.setText(item_master.getReleaseby1());
-                                        txtstatus2.setText(item_master.getStatus2());
-                                        txtapprove2.setText(item_master.getReleaseby());
-                                        txtsuppcode.setText(item_master.getSuppcode());
-                                        txtsuppname.setText(item_master.getSuppname());
-                                        txtsuppalamat.setText(item_master.getSuppaddress());
-                                        txtpurchorg.setText(item_master.getCompany());
-                                        txtdiserahkan.setText(item_master.getBrcode());
-                                        txtalmtdiserahkan.setText(item_master.getAlamatbr());
-                                        txtkotadiserahkan.setText(item_master.getKotabr());
-                                        txtmu.setText(item_master.getMucode());
-                                        txtrate.setText(item_master.getRate());
-                                        txttop.setText(item_master.getTop());
-                                        txtbrutto.setText(item_master.getBrutto());
-                                        txtdisc.setText(item_master.getDisc());
-                                        txtdpp.setText(item_master.getDpp());
-                                        txtmppn.setText(item_master.getMppn());
-                                        txtnetto.setText(item_master.getNetto());
-
-//                                        if (item_master.getIncppn().equals("1")) {
-//                                            txtincppn.setText("YES");
-//                                            swcincppn.setChecked(true);
-//                                        } else {
-//                                            txtincppn.setText("NO");
-//                                            swcincppn.setChecked(false);
-//                                        }
-//
-//                                        if (item_master.getPpn().equals("1")) {
-//                                            txtppn.setText("YES");
-//                                            swcppn.setChecked(true);
-//                                        } else {
-//                                            txtppn.setText("NO");
-//                                            swcppn.setChecked(false);
-//                                        }
-//
-//                                        if (item_master.getSp().equals("1")) {
-//                                            txtsp.setText("YES");
-//                                            swcsp.setChecked(true);
-//                                        } else {
-//                                            txtsp.setText("NO");
-//                                            swcsp.setChecked(false);
-//                                        }
-
-                                        tipeorder = item_master.getPoorder();
-
+                                        kode_supplier.setText(item_master.getKode_supplier());
+                                        nama_supplier.setText(item_master.getNama_supplier());
+                                        alamat_supplier.setText(item_master.getAlamat_supplier());
+                                        branch.setText(item_master.getBranch());
+                                        nama_plant.setText(item_master.getNama_plant());
+                                        status.setText(item_master.getStatus());
+                                        nama_tipe.setText(item_master.getNama_tipe());
+                                        pembayaran.setText(item_master.getPembayaran());
+                                        keterangan.setText(item_master.getKeterangan());
+                                        tgl_input.setText(item_master.getTgl_input());
+                                        tgl_posting.setText(item_master.getTgl_posting());
+                                        diinput_oleh.setText(item_master.getDiinput_oleh());
+                                        tgl_approve1.setText(item_master.getTgl_approve1());
+                                        approve1_oleh.setText(item_master.getApprove1_oleh());
+                                        tgl_approve2.setText(item_master.getTgl_approve2());
+                                        approve2_oleh.setText(item_master.getApprove2_oleh());
+                                        no_po.setText(item_master.getNo_po());
+                                        order_po.setText(item_master.getOrder_po());
+                                        nama_gudang.setText(item_master.getNama_gudang());
+                                        no_faktur_sj.setText(item_master.getNo_faktur_sj());
+                                        no_ekspedisi.setText(item_master.getNo_ekspedisi());
+                                        no_container.setText(item_master.getNo_container());
+                                        tgl_sj_supplier.setText(item_master.getTgl_sj_supplier());
+                                        tgl_penerimaan.setText(item_master.getTgl_penerimaan());
+                                        mata_uang.setText(item_master.getMata_uang());
+                                        top.setText(item_master.getNtop());
                                     }
 
                                     if (pDialog != null) pDialog.dismiss();

@@ -21,6 +21,7 @@ import com.tanobel.it_yoga.tis_mobile.model.GR_Dtl_RVAdapter;
 import com.tanobel.it_yoga.tis_mobile.util.InternetConnection;
 import com.tanobel.it_yoga.tis_mobile.util.MainModule;
 import com.tanobel.it_yoga.tis_mobile.util.RequestPost;
+import com.tanobel.it_yoga.tis_mobile.util.RequestPostLumen;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -41,12 +42,12 @@ import okhttp3.Response;
 
 public class GR_Fragment_Detail extends Fragment {
     List<GR_Dtl> kt = new ArrayList<>();
-    private RequestPost RP;
+    private RequestPostLumen RP;
     InternetConnection internetCon = new InternetConnection();
     private XRecyclerView mXRecyclerView;
     private GR_Dtl_RVAdapter mAdapter;
     ProgressDialog pDialog;
-    String plant, docno, tipe, statusnew, statusdescnew, menu_type;
+    String plant, docno, tipe, statusnew, statusdescnew, menu_type,segment;
 
     FloatingActionMenu fbuttonMenu;
     FloatingActionButton fbuttonApprove, fbuttonCancel;
@@ -57,7 +58,7 @@ public class GR_Fragment_Detail extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_po_detail, container, false);
+        View view = inflater.inflate(R.layout.fragment_gr_detail, container, false);
 
         helper = new Db_GR(getActivity());
 
@@ -66,12 +67,16 @@ public class GR_Fragment_Detail extends Fragment {
         pDialog.setIndeterminate(true);
         pDialog.setCancelable(true);
 
-        GR_Detail prdetail = (GR_Detail) getActivity();
-        plant = prdetail.plant;
-        docno = prdetail.textTitle.getText().toString();
-        tipe = prdetail.tipe;
-        menu_type = prdetail.menutype;
-
+        GR_Detail grdetail = (GR_Detail) getActivity();
+        plant = grdetail.plant;
+        docno = grdetail.textTitle.getText().toString();
+        tipe = grdetail.tipe;
+        menu_type = grdetail.menutype;
+        if (menu_type.equals("AppvLPB")){
+            segment = "approval1.lpb.view_barang";
+        }else if (menu_type.equals("Appv2LPB")){
+            segment = "approval2.lpb.view_barang";
+        }
         mXRecyclerView = view.findViewById(R.id.rv_po);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -103,24 +108,6 @@ public class GR_Fragment_Detail extends Fragment {
         mAdapter = new GR_Dtl_RVAdapter(this, kt, menu_type);
         mXRecyclerView.setAdapter(mAdapter);
 
-        fbuttonMenu = view.findViewById(R.id.fbActionMenu_po);
-        fbuttonApprove = view.findViewById(R.id.fbApproveAll_po);
-        fbuttonCancel = view.findViewById(R.id.fbCancelAll_po);
-
-        fbuttonApprove.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                updateStatus(kt, "Approve");
-                fbuttonMenu.close(true);
-            }
-        });
-
-        fbuttonCancel.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                updateStatus(kt, "Cancel");
-                fbuttonMenu.close(true);
-            }
-        });
-
         if (menu_type.equals("Appv2GR")) {
             fbuttonMenu.hideMenu(true);
         }
@@ -141,29 +128,11 @@ public class GR_Fragment_Detail extends Fragment {
         for (int i = 0; i < itemList.size(); i++) {
             GR_Dtl items = itemList.get(i);
             GR_Dtl item = new GR_Dtl();
-            item.setId(items.getId());
-            item.setBranch(items.getBranch());
-            item.setDocno(items.getDocno());
-            item.setNo(items.getNo());
-            item.setDocref(items.getDocref());
-            item.setBranchto(items.getBranchto());
-            item.setBrgcode(items.getBrgcode());
-            item.setBrgname(items.getBrgname());
-            item.setBrgdesc(items.getBrgdesc());
-            item.setSatcode(items.getSatcode());
-            item.setQty(items.getQty());
-            item.setIocode(items.getIocode());
-            item.setStatus(items.getStatus());
-            item.setStatusdesc(items.getStatusdesc());
-            item.setNoref(items.getNoref());
-            item.setStatusold(items.getStatusold());
-            item.setHarga1(items.getHarga1());
-            item.setDisc1(items.getDisc1());
-            item.setBrutto(items.getBrutto());
-            item.setMdisc1(items.getMdisc1());
-            item.setDpp(items.getDpp());
-            item.setPpn(items.getPpn());
-            item.setNetto(items.getNetto());
+            item.setNo_po(items.getNo_po());
+            item.setKode_barang(items.getKode_barang());
+            item.setNama_barang(items.getNama_barang());
+            item.setSatuan(items.getSatuan());
+            item.setJumlah(items.getJumlah());
             kt.add(item);
         }
 
@@ -177,23 +146,17 @@ public class GR_Fragment_Detail extends Fragment {
             }
             try {
                 JSONObject json = new JSONObject();
-                JSONObject data = new JSONObject();
                 try {
                     json = new JSONObject();
-                    json.put("action", "Purchase");
-                    json.put("method", "getGRDtl");
-                    JSONArray arr2 = new JSONArray();
-                    data.put("plant", plant);
-                    data.put("docno", docno);
-                    data.put("user", ((MainModule) getActivity().getApplicationContext()).getUserTIS());
-                    arr2.put(data);
-                    json.put("data", arr2);
+                    json.put("plant", plant);
+                    json.put("docno", docno);
+                    json.put("username", ((MainModule) getActivity().getApplicationContext()).getUserTIS());
                     Log.i("JSON nya", json.toString());
                 } catch (JSONException e) {
                     if (pDialog != null) pDialog.dismiss();
                     e.printStackTrace();
                 }
-                RP = new RequestPost("router-purchase.php", json, getActivity().getApplicationContext());
+                RP = new RequestPostLumen(segment, json, getActivity().getApplicationContext());
                 RP.execPostCall(new Callback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
@@ -217,7 +180,7 @@ public class GR_Fragment_Detail extends Fragment {
                                     helper.delete();
                                     for (int i = 0; i < hasil.length(); i++) {
                                         JSONObject podtl = hasil.getJSONObject(i);
-                                        long id = helper.insertData(podtl.getString("branch"), podtl.getString("docno"), podtl.getString("no"), podtl.getString("docref"), podtl.getString("branchto"), podtl.getString("brgcode"), MainModule.getcharfromascii(podtl.getString("brgname")), MainModule.getcharfromascii(podtl.getString("brgdesc")), podtl.getString("satcode"), podtl.getString("qty"), podtl.getString("iocode"), podtl.getString("status"), podtl.getString("statusdesc"), podtl.getString("statusold"), podtl.getString("harga1"), podtl.getString("disc1"), podtl.getString("brutto"), podtl.getString("mdisc1"), podtl.getString("dpp"), podtl.getString("ppn"), podtl.getString("netto"));
+                                        long id = helper.insertData(podtl.getString("branch"), podtl.getString("docno"), podtl.getString("no_po"), podtl.getString("kode_barang"), podtl.getString("nama_barang"), podtl.getString("satuan"), podtl.getString("jumlah"));
                                         if (id <= 0) {
                                             Toast toast = Toast.makeText(getActivity().getApplicationContext(), "Ada kesalahan load detail item", Toast.LENGTH_SHORT);
                                             toast.show();
@@ -237,38 +200,6 @@ public class GR_Fragment_Detail extends Fragment {
                     }
                 });
             } catch (IOException e) {
-                if (pDialog != null) pDialog.dismiss();
-                e.printStackTrace();
-            }
-        } else {
-            Toast toast = Toast.makeText(getActivity().getApplicationContext(), "Tidak terhubung ke internet", Toast.LENGTH_SHORT);
-            toast.show();
-        }
-    }
-
-    void updateStatus(final List<GR_Dtl> datalist, String statustipe) {
-        if (internetCon.checkConnection(getActivity().getApplicationContext())) {
-            if (!isRemoving()) {
-                pDialog.show();
-            }
-            try {
-                for (int i = 0; i < datalist.size(); i++) {
-                    GR_Dtl item = datalist.get(i);
-
-                    if (statustipe.equals("Approve")) {
-                        statusnew = "R";
-                        statusdescnew = "Release";
-                    } else {
-                        statusnew = "C";
-                        statusdescnew = "Cancel";
-                    }
-
-                    helper.update(String.valueOf(item.getId()), statusnew, statusdescnew);
-                }
-
-                getOrderDetailList();
-                if (pDialog != null) pDialog.dismiss();
-            } catch (Exception e) {
                 if (pDialog != null) pDialog.dismiss();
                 e.printStackTrace();
             }
