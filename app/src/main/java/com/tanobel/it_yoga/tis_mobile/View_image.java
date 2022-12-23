@@ -73,6 +73,8 @@ public class View_image extends AppCompatActivity {
                 title = "Image QC Inspection";
             }else if (Objects.equals(usage, "image_incoming")){
                 title = "Image Incoming Inspection";
+            }else if (Objects.equals(usage, "image_sj")){
+                title = "View Image SJ";
             }
             Log.i("Usage Image",title);
             getSupportActionBar().setTitle(title);
@@ -82,7 +84,7 @@ public class View_image extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         //imagesRV = (RecyclerView) imagesRV;
-        View_image_adapter imgAdapter = new View_image_adapter(View_image.this,docno);
+        View_image_adapter imgAdapter = new View_image_adapter(View_image.this,docno,plant,usage);
         imagesRV.setAdapter(imgAdapter);
         imagesRV.setLayoutManager(layoutManager);
     }

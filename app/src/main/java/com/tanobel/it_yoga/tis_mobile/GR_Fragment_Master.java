@@ -128,6 +128,7 @@ public class GR_Fragment_Master extends Fragment {
                 j.putExtra("docno", docno);
                 j.putExtra("plant", plant);
                 j.putExtra("user", user);
+                j.putExtra("usage", "image_sj");
                 startActivity(j);
             }
         });
