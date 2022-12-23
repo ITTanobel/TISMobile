@@ -8,10 +8,13 @@ import android.os.Bundle;
 import com.google.android.material.tabs.TabLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -32,13 +35,14 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
 public class View_image extends AppCompatActivity {
-    String docno,plant,user;
+    String docno,plant,user,usage,title;
     ProgressDialog pDialog;
     private ArrayList<String> imagePaths;
     private RecyclerView imagesRV;
@@ -58,15 +62,29 @@ public class View_image extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle bd = intent.getExtras();
+        usage = "image_sj";
         if (bd != null) {
             docno = (String) bd.get("docno");
             plant = (String) bd.get("plant");
             user = (String) bd.get("user");
-            getSupportActionBar().setTitle("View Image");
+            usage = (String) bd.get("usage");
+            title = "View Image";
+            if (Objects.equals(usage, "image_qc")){
+                title = "Image QC Inspection";
+            }else if (Objects.equals(usage, "image_incoming")){
+                title = "Image Incoming Inspection";
+            }
+            Log.i("Usage Image",title);
+            getSupportActionBar().setTitle(title);
             getSupportActionBar().setSubtitle((String) bd.get("docno"));
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
-        prepareImageView();
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        //imagesRV = (RecyclerView) imagesRV;
+        View_image_adapter imgAdapter = new View_image_adapter(View_image.this,docno);
+        imagesRV.setAdapter(imgAdapter);
+        imagesRV.setLayoutManager(layoutManager);
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -82,10 +100,5 @@ public class View_image extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-    }
-
-    private void prepareImageView(){
-        GridLayoutManager manager = new GridLayoutManager(View_image.this,4);
-        imagesRV.setLayoutManager(manager);
     }
 }

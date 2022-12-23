@@ -1,5 +1,4 @@
 package com.tanobel.it_yoga.tis_mobile;
-
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.os.Handler;
@@ -9,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.github.clans.fab.FloatingActionButton;
@@ -18,6 +18,7 @@ import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.tanobel.it_yoga.tis_mobile.model.Db_GR;
 import com.tanobel.it_yoga.tis_mobile.model.GR_Dtl;
 import com.tanobel.it_yoga.tis_mobile.model.GR_Dtl_RVAdapter;
+import com.tanobel.it_yoga.tis_mobile.model.GR_Inspection;
 import com.tanobel.it_yoga.tis_mobile.util.InternetConnection;
 import com.tanobel.it_yoga.tis_mobile.util.MainModule;
 import com.tanobel.it_yoga.tis_mobile.util.RequestPost;
@@ -34,23 +35,15 @@ import java.util.List;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
-
-
-/**
- * Created by Galeh on 08/12/2022.
- */
-
-public class GR_Fragment_Detail extends Fragment {
+public class GR_Fragment_Inspection extends Fragment {
     List<GR_Dtl> kt = new ArrayList<>();
     private RequestPostLumen RP;
     InternetConnection internetCon = new InternetConnection();
     private XRecyclerView mXRecyclerView;
-    private GR_Dtl_RVAdapter mAdapter;
+    private GR_Inspection mAdapter;
     ProgressDialog pDialog;
-    String plant, docno, tipe, statusnew, statusdescnew, menu_type,segment;
-
+    String plant, docno, tipe, user, statusdescnew, menu_type,segment;
     FloatingActionMenu fbuttonMenu;
-    FloatingActionButton fbuttonApprove, fbuttonCancel;
 
     Db_GR helper;
 
@@ -58,7 +51,7 @@ public class GR_Fragment_Detail extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_gr_detail, container, false);
+        View view = inflater.inflate(R.layout.fragment_gr_inspection, container, false);
 
         helper = new Db_GR(getActivity());
 
@@ -71,6 +64,7 @@ public class GR_Fragment_Detail extends Fragment {
         plant = grdetail.plant;
         docno = grdetail.textTitle.getText().toString();
         tipe = grdetail.tipe;
+        user = grdetail.user;
         menu_type = grdetail.menutype;
         if (menu_type.equals("AppvLPB")){
             segment = "approval1.lpb.view_barang";
@@ -105,7 +99,7 @@ public class GR_Fragment_Detail extends Fragment {
         });
 
 
-        mAdapter = new GR_Dtl_RVAdapter(this, kt, menu_type);
+        mAdapter = new GR_Inspection(this, kt, menu_type,plant,docno,user);
         mXRecyclerView.setAdapter(mAdapter);
 
         if (menu_type.equals("Appv2GR")) {

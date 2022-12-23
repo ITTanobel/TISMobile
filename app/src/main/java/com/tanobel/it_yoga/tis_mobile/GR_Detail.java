@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.tanobel.it_yoga.tis_mobile.model.Db_GR;
 import com.tanobel.it_yoga.tis_mobile.model.GR_Dtl;
+import com.tanobel.it_yoga.tis_mobile.model.GR_PageAdapter;
 import com.tanobel.it_yoga.tis_mobile.model.Purchase_PageAdapter;
 import com.tanobel.it_yoga.tis_mobile.util.InternetConnection;
 import com.tanobel.it_yoga.tis_mobile.util.MainModule;
@@ -41,11 +42,11 @@ public class GR_Detail extends AppCompatActivity {
     private RequestPostLumen RP;
     InternetConnection internetCon = new InternetConnection();
 
-    Purchase_PageAdapter pagerAdapter;
+    GR_PageAdapter pagerAdapter;
     ViewPager vp;
     TabLayout tabLayout;
     TextView textTitle, textSubTitle;
-    String menutype, plant, custcode, tipe,user,segment;
+    String menutype, plant, custcode, tipe,user,segment,docno;
     ImageButton btnsave;
     ProgressDialog pDialog;
     Boolean sendemail;
@@ -75,6 +76,7 @@ public class GR_Detail extends AppCompatActivity {
         Bundle bd = intent.getExtras();
         if (bd != null) {
             menutype = (String) bd.get("menu_type");
+            docno = (String) bd.get("docno");
             textTitle.setText((String) bd.get("docno"));
             textSubTitle.setText((String) bd.get("custname"));
             plant = (String) bd.get("plant");
@@ -103,7 +105,7 @@ public class GR_Detail extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 List<GR_Dtl> itemList = helper.getDataAll();
-                if (menutype.equals("AppvGR") && itemList.size() > 0) {
+                if (menutype.equals("AppvPO") && itemList.size() > 0) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(GR_Detail.this);
                     builder.setMessage("Masih ada item yang belum diapprove / dicancel.")
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -131,41 +133,7 @@ public class GR_Detail extends AppCompatActivity {
                                 @Override
                                 public void onClick(View view) {
                                     dialog.dismiss();
-                                    final androidx.appcompat.app.AlertDialog dialog2 = new androidx.appcompat.app.AlertDialog.Builder(GR_Detail.this)
-                                            .setMessage("Apakah akan mengirim email otomatis ke supllier ?")
-                                            .setPositiveButton("Ya", null) //Set to null. We override the onclick
-                                            .setNegativeButton("Tidak", null)
-                                            .create();
-
-                                    dialog2.setOnShowListener(new DialogInterface.OnShowListener() {
-
-                                        @Override
-                                        public void onShow(final DialogInterface dialog) {
-
-                                            Button button = ((androidx.appcompat.app.AlertDialog) dialog).getButton(androidx.appcompat.app.AlertDialog.BUTTON_POSITIVE);
-                                            button.setOnClickListener(new View.OnClickListener() {
-
-                                                @Override
-                                                public void onClick(View view) {
-                                                    dialog2.dismiss();
-                                                    sendemail = true;
-                                                    updateData();
-                                                }
-                                            });
-
-                                            Button button2 = ((androidx.appcompat.app.AlertDialog) dialog).getButton(androidx.appcompat.app.AlertDialog.BUTTON_NEGATIVE);
-                                            button2.setOnClickListener(new View.OnClickListener() {
-
-                                                @Override
-                                                public void onClick(View view) {
-                                                    dialog2.dismiss();
-                                                    sendemail = false;
-                                                    updateData();
-                                                }
-                                            });
-                                        }
-                                    });
-                                    dialog2.show();
+                                    updateData();
                                 }
                             });
                         }
@@ -184,9 +152,10 @@ public class GR_Detail extends AppCompatActivity {
     }
 
     private void addPages() {
-        pagerAdapter = new Purchase_PageAdapter(this.getSupportFragmentManager());
+        pagerAdapter = new GR_PageAdapter(this.getSupportFragmentManager());
         pagerAdapter.addFragment(new GR_Fragment_Master());
         pagerAdapter.addFragment(new GR_Fragment_Detail());
+        pagerAdapter.addFragment(new GR_Fragment_Inspection());
         //SET ADAPTER TO VP
         vp.setAdapter(pagerAdapter);
     }
@@ -222,17 +191,9 @@ public class GR_Detail extends AppCompatActivity {
             }
             try {
                 JSONObject json = new JSONObject();
-                json.put("menutype", menutype);
-                JSONArray arrdtl = new JSONArray();
-                for (int i = 0; i < ItemListDtl.size(); i++) {
-                    JSONObject datadtl = new JSONObject();
-                    GR_Dtl itemdtl = ItemListDtl.get(i);
-                    datadtl.put("branch", itemdtl.getBranch());
-                    datadtl.put("docno", itemdtl.getDocno());
-                    arrdtl.put(datadtl);
-                }
-                json.put("datadtl", arrdtl);
-
+                json.put("docno", docno);
+                json.put("plant", plant);
+                json.put("username", user);
                 RP = new RequestPostLumen(segment, json, getApplicationContext());
                 RP.execPostCall(new Callback() {
                     @Override
