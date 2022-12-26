@@ -23,7 +23,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/image/baseline_image_24.xml" />
+                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/image_search/baseline_image_search_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -33,8 +33,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="ffffff" />
-                            <entry key="outputName" value="ic_image_inspection" />
+                            <entry key="color" value="afafaf" />
+                            <entry key="outputName" value="ic_image_search" />
                             <entry key="sourceFile" value="C:\Users\g.fatma\Downloads\gr.svg" />
                           </map>
                         </option>

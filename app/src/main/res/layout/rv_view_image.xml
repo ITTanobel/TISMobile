@@ -7,9 +7,9 @@
     <com.jsibbold.zoomage.ZoomageView
         android:id="@+id/image_view"
         android:layout_width="match_parent"
-        android:layout_height="663dp"
+        android:layout_height="700dp"
         android:layout_gravity="center"
-        android:src="@drawable/ic_image_inspection"
+        android:src="@drawable/ic_image_search"
         app:zoomage_restrictBounds="false"
         app:zoomage_animateOnReset="true"
         app:zoomage_autoResetMode="UNDER"

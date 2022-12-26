@@ -125,14 +125,14 @@ public class View_image_adapter extends RecyclerView.Adapter<View_image_adapter.
                                 public void run() {
                                     try {
                                         JSONObject obj = new JSONObject(jsonData);
-                                        String status = obj.getString("success");
+                                        int status = obj.getInt("success");
                                         String images = obj.getString("image");
-                                        if (status == "1"){
+                                        if (status == 1){
                                             byte[] decodedBytes = Base64.decode(images, 0);
                                             Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
                                             image.setImageBitmap(decodedByte);
                                         }else{
-                                            Toast toast = Toast.makeText(mFragment.getApplicationContext(), "Ada kesalahan load data", Toast.LENGTH_SHORT);
+                                            Toast toast = Toast.makeText(mFragment.getApplicationContext(), "Tidak Ada Image!", Toast.LENGTH_SHORT);
                                             toast.show();
                                         }
                                         if (pDialog != null) pDialog.dismiss();

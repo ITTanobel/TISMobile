@@ -30,8 +30,8 @@ public class RequestPostLumen {
     static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     final MediaType MEDIA_TYPE_IMG = MediaType.parse("image/*");
     //IP server
-    String url="http://172.16.16.23/api-approval/public/";
-    //String url="https://tanobelfood.com/api-approval/public/";
+    //String url="http://172.16.16.23/api-approval/public/";
+    String url="https://tanobelfood.com/api-approval/public/";
     InternetConnection internetCon=new InternetConnection();
     public RequestPostLumen(String path, JSONObject json, Context context) {
         if (internetCon.checkConnection(context)) {

@@ -13,6 +13,8 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import androidx.core.app.NotificationCompat;
+
+import android.os.Build;
 import android.text.Html;
 import java.io.IOException;
 import java.io.InputStream;
@@ -40,14 +42,19 @@ public class MyNotificationManager {
     //parameters are title for message title, message for message text, url of the big image and an intent that will open
     //when you will tap on the notification
     public void showBigNotification(String title, String message, String url, Intent intent) {
+        int pendingFlags;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            pendingFlags=PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT;
+        }else {
+            pendingFlags=PendingIntent.FLAG_UPDATE_CURRENT;
+        }
         PendingIntent resultPendingIntent =
-                PendingIntent.getActivity(
-                        mCtx,
-                        ID_BIG_NOTIFICATION,
-                        intent,
-                        PendingIntent.FLAG_UPDATE_CURRENT
-                );
-
+                    PendingIntent.getActivity(
+                            mCtx,
+                            ID_BIG_NOTIFICATION,
+                            intent,
+                            pendingFlags
+                    );
         NotificationManager notificationManager = (NotificationManager) mCtx.getSystemService(Context.NOTIFICATION_SERVICE);
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
@@ -89,14 +96,18 @@ public class MyNotificationManager {
     //parameters are title for message title, message for message text and an intent that will open
     //when you will tap on the notification
     public void showSmallNotification(String title, String message, Intent intent) {
-        PendingIntent resultPendingIntent =
-                PendingIntent.getActivity(
-                        mCtx,
-                        ID_SMALL_NOTIFICATION,
-                        intent,
-                        PendingIntent.FLAG_ONE_SHOT
-                );
-
+        int pendingFlags;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            pendingFlags = PendingIntent.FLAG_MUTABLE | PendingIntent.FLAG_ONE_SHOT;
+        }else{
+            pendingFlags = PendingIntent.FLAG_ONE_SHOT;
+        }
+        PendingIntent resultPendingIntent = PendingIntent.getActivity(
+                mCtx,
+                ID_SMALL_NOTIFICATION,
+                intent,
+                pendingFlags
+        );
         NotificationManager notificationManager = (NotificationManager) mCtx.getSystemService(Context.NOTIFICATION_SERVICE);
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
@@ -120,7 +131,7 @@ public class MyNotificationManager {
         notification = mBuilder.setSmallIcon(R.mipmap.ic_tis).setTicker(title).setWhen(0)
                 .setDefaults(Notification.DEFAULT_ALL)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
-                .setVisibility(Notification.VISIBILITY_PUBLIC)
+                .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
                 .setAutoCancel(true)
                 .setContentIntent(resultPendingIntent)
                 .setContentTitle(title)
