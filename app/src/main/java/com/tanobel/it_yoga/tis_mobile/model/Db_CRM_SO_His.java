@@ -52,11 +52,11 @@ public class Db_CRM_SO_His {
         while (cursor.moveToNext()) {
             CRM_SO_HisTVList operatorTable = new CRM_SO_HisTVList();
             //here get all data from cursor and set it into setter method like below
-            operatorTable.setPsono(cursor.getString(cursor.getColumnIndex(myDbHelper.PSONO)));
-            operatorTable.setCustkirim(cursor.getString(cursor.getColumnIndex(myDbHelper.CUSTKIRIM)));
-            operatorTable.setAlamat(cursor.getString(cursor.getColumnIndex(myDbHelper.ALAMAT)));
-            operatorTable.setTglkirim(cursor.getString(cursor.getColumnIndex(myDbHelper.TGLKIRIM)));
-            operatorTable.setStatus(cursor.getString(cursor.getColumnIndex(myDbHelper.STATUS)));
+            operatorTable.setPsono(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.PSONO)));
+            operatorTable.setCustkirim(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.CUSTKIRIM)));
+            operatorTable.setAlamat(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.ALAMAT)));
+            operatorTable.setTglkirim(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.TGLKIRIM)));
+            operatorTable.setStatus(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.STATUS)));
 
             listAll.add(operatorTable);
         }
@@ -74,13 +74,13 @@ public class Db_CRM_SO_His {
         Cursor cursor = db.query(true, myDbHelper.TABLE_NAME, columns, whereClause, whereArgs, null, null, null, null);
 
         while (cursor.moveToNext()) {
-            if (!cursor.getString(cursor.getColumnIndex(myDbHelper.SONO)).trim().equals("")) {
+            if (!cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.SONO)).trim().equals("")) {
                 CRM_SO_HisTVList operatorTable = new CRM_SO_HisTVList();
                 //here get all data from cursor and set it into setter method like below
-                operatorTable.setSono(cursor.getString(cursor.getColumnIndex(myDbHelper.SONO)));
-                operatorTable.setTglso(cursor.getString(cursor.getColumnIndex(myDbHelper.TGLSO)));
-                operatorTable.setKetso(cursor.getString(cursor.getColumnIndex(myDbHelper.KETSO)));
-                operatorTable.setStatusso(cursor.getString(cursor.getColumnIndex(myDbHelper.STATUSSO)));
+                operatorTable.setSono(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.SONO)));
+                operatorTable.setTglso(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.TGLSO)));
+                operatorTable.setKetso(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.KETSO)));
+                operatorTable.setStatusso(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.STATUSSO)));
 
                 listAll.add(operatorTable);
             }
@@ -99,12 +99,12 @@ public class Db_CRM_SO_His {
         Cursor cursor = db.query(true, myDbHelper.TABLE_NAME, columns, whereClause, whereArgs, null, null, null, null);
 
         while (cursor.moveToNext()) {
-            if (!cursor.getString(cursor.getColumnIndex(myDbHelper.DONO)).trim().equals("")) {
+            if (!cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.DONO)).trim().equals("")) {
                 CRM_SO_HisTVList operatorTable = new CRM_SO_HisTVList();
                 //here get all data from cursor and set it into setter method like below
-                operatorTable.setDono(cursor.getString(cursor.getColumnIndex(myDbHelper.DONO)));
-                operatorTable.setTgldo(cursor.getString(cursor.getColumnIndex(myDbHelper.TGLDO)));
-                operatorTable.setStatusdo(cursor.getString(cursor.getColumnIndex(myDbHelper.STATUSDO)));
+                operatorTable.setDono(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.DONO)));
+                operatorTable.setTgldo(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.TGLDO)));
+                operatorTable.setStatusdo(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.STATUSDO)));
 
                 listAll.add(operatorTable);
             }
@@ -124,12 +124,12 @@ public class Db_CRM_SO_His {
         Cursor cursor = db.query(true, myDbHelper.TABLE_NAME, columns, whereClause, whereArgs, null, null, null, null);
 
         while (cursor.moveToNext()) {
-            if (!cursor.getString(cursor.getColumnIndex(myDbHelper.SJNO)).trim().equals("")) {
+            if (!cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.SJNO)).trim().equals("")) {
                 CRM_SO_HisTVList operatorTable = new CRM_SO_HisTVList();
                 //here get all data from cursor and set it into setter method like below
-                operatorTable.setSjno(cursor.getString(cursor.getColumnIndex(myDbHelper.SJNO)));
-                operatorTable.setTglsj(cursor.getString(cursor.getColumnIndex(myDbHelper.TGLSJ)));
-                operatorTable.setStatussj(cursor.getString(cursor.getColumnIndex(myDbHelper.STATUSSJ)));
+                operatorTable.setSjno(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.SJNO)));
+                operatorTable.setTglsj(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.TGLSJ)));
+                operatorTable.setStatussj(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.STATUSSJ)));
 
                 listAll.add(operatorTable);
             }
@@ -148,12 +148,12 @@ public class Db_CRM_SO_His {
         Cursor cursor = db.query(true, myDbHelper.TABLE_NAME, columns, whereClause, whereArgs, null, null, null, null);
 
         while (cursor.moveToNext()) {
-            if (!cursor.getString(cursor.getColumnIndex(myDbHelper.BILLNO)).trim().equals("")) {
+            if (!cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.BILLNO)).trim().equals("")) {
                 CRM_SO_HisTVList operatorTable = new CRM_SO_HisTVList();
                 //here get all data from cursor and set it into setter method like below
-                operatorTable.setBillno(cursor.getString(cursor.getColumnIndex(myDbHelper.BILLNO)));
-                operatorTable.setTglbill(cursor.getString(cursor.getColumnIndex(myDbHelper.TGLBILL)));
-                operatorTable.setStatusbill(cursor.getString(cursor.getColumnIndex(myDbHelper.STATUSBILL)));
+                operatorTable.setBillno(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.BILLNO)));
+                operatorTable.setTglbill(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.TGLBILL)));
+                operatorTable.setStatusbill(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.STATUSBILL)));
 
                 listAll.add(operatorTable);
             }

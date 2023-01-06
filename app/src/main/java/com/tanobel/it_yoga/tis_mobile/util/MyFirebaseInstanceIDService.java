@@ -6,8 +6,14 @@ package com.tanobel.it_yoga.tis_mobile.util;
 
 import android.util.Log;
 
-import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.iid.FirebaseInstanceIdService;
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+//import com.google.firebase.iid.FirebaseInstanceId;
+//import com.google.firebase.iid.FirebaseInstanceIdService;
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.messaging.FirebaseMessagingService;
 
 /**
  * Created by Belal on 03/11/16.
@@ -15,21 +21,33 @@ import com.google.firebase.iid.FirebaseInstanceIdService;
 
 
 //Class extending FirebaseInstanceIdService
-public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
+public class MyFirebaseInstanceIDService extends FirebaseMessagingService {
 
     private static final String TAG = "MyFirebaseIIDService";
 
-    @Override
+
     public void onTokenRefresh() {
 
         //Getting registration token
-        String refreshedToken = FirebaseInstanceId.getInstance().getToken();
+        final String[] refreshedToken = {null};
+        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener<String>() {
+            @Override
+            public void onComplete(@NonNull Task<String> task) {
+                if (!task.isSuccessful()) {
+                    Log.w(TAG, "Fetching FCM registration token failed", task.getException());
+                    return;
+                }
+
+                // Get new FCM registration token
+                refreshedToken[0] = task.getResult();
+            }
+        });
 
         //Displaying token on logcat
-        Log.d(TAG, "Refreshed token: " + refreshedToken);
+        Log.d(TAG, "Refreshed token: " + refreshedToken[0]);
 
         //calling the method store token and passing token
-        storeToken(refreshedToken);
+        storeToken(refreshedToken[0]);
     }
 
     private void storeToken(String token) {

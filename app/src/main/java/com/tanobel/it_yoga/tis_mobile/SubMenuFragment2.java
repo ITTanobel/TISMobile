@@ -38,7 +38,7 @@ import okhttp3.Response;
  * Activities that contain this fragment must implement the
  * {@link //SubMenuFragment1.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link SubMenuFragment2#newInstance} factory method to
+ * Use the  factory method to
  * create an instance of this fragment.
  */
 
@@ -135,6 +135,18 @@ public class SubMenuFragment2 extends Fragment {
                         c.putExtra("menu_name", Menu_DataList.getNama());
                         c.putExtra("menu_type", "Appv2PO");
                         startActivity(c);
+                        break;
+                    case "APV04":
+                        Intent d = new Intent(getActivity(), GoodsReceipt_View.class);
+                        d.putExtra("menu_name", Menu_DataList.getNama());
+                        d.putExtra("menu_type", "AppvLPB");
+                        startActivity(d);
+                        break;
+                    case "APV05":
+                        Intent e = new Intent(getActivity(), GoodsReceipt_View.class);
+                        e.putExtra("menu_name", Menu_DataList.getNama());
+                        e.putExtra("menu_type", "Appv2LPB");
+                        startActivity(e);
                         break;
                 }
 

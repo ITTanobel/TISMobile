@@ -1,5 +1,4 @@
 package com.tanobel.it_yoga.tis_mobile.util;
-
 import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
@@ -21,8 +20,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
-
-public class RequestPost {
+public class RequestPostLumen {
     JSONObject json,filenya;
     String path,jsonData="";
     Boolean connection;
@@ -32,10 +30,10 @@ public class RequestPost {
     static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     final MediaType MEDIA_TYPE_IMG = MediaType.parse("image/*");
     //IP server
-    //String url="http://172.16.16.23/tis-mobile/";
-    String url="https://www.tanobelfood.com/tis-mobile/";
+    //String url="http://172.16.16.23/api-approval/public/";
+    String url="https://tanobelfood.com/api-approval/public/";
     InternetConnection internetCon=new InternetConnection();
-    public RequestPost(String path, JSONObject json, Context context) {
+    public RequestPostLumen(String path, JSONObject json, Context context) {
         if (internetCon.checkConnection(context)) {
             this.json = json;
             this.path = path;
@@ -45,7 +43,7 @@ public class RequestPost {
             connection = false;
             Toast toast=Toast.makeText(context,"Tidak terhubung ke internet",Toast.LENGTH_SHORT);
             toast.show();
-       }
+        }
     }
 
     public String execPost() throws IOException {
@@ -74,6 +72,7 @@ public class RequestPost {
                 }
                 Request newReq = new Request.Builder()
                         .url(url + path)
+                        .addHeader("api-key","mpr38rTz49fmw3SUwdp23KJNGOqnG6Tf")
                         .post(body)
                         .build();
                 Log.i("okhttp", "Request JSON");
@@ -115,6 +114,7 @@ public class RequestPost {
                 }
                 Request newReq = new Request.Builder()
                         .url(url + path)
+                        .addHeader("api-key","mpr38rTz49fmw3SUwdp23KJNGOqnG6Tf")
                         .post(body)
                         .build();
                 Log.i("okhttp", "Request JSON");
@@ -125,7 +125,7 @@ public class RequestPost {
             }
         }
     }
-    public RequestPost(String path, JSONObject json, JSONObject filenya, Context context){
+    public RequestPostLumen(String path, JSONObject json, JSONObject filenya, Context context){
         if (internetCon.checkConnection(context)) {
             this.path = path;
             this.json = json;

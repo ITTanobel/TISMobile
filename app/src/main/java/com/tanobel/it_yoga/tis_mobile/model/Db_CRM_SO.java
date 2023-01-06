@@ -39,8 +39,8 @@ public class Db_CRM_SO {
         StringBuffer buffer= new StringBuffer();
         while (cursor.moveToNext())
         {
-            String kode =cursor.getString(cursor.getColumnIndex(myDbHelper.TGLKIRIM));
-            String nama =cursor.getString(cursor.getColumnIndex(myDbHelper.BRGNAME));
+            String kode =cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.TGLKIRIM));
+            String nama =cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.BRGNAME));
             buffer.append(kode+ "   " + nama + " \n");
         }
         return buffer.toString();
@@ -58,12 +58,12 @@ public class Db_CRM_SO {
         {
             CRM_SO_OrderDetail operatorTable = new CRM_SO_OrderDetail();
             //here get all data from cursor and set it into setter method like below
-            operatorTable.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex(myDbHelper.ID))));
-            operatorTable.setKode(cursor.getString(cursor.getColumnIndex(myDbHelper.BRGCODE)));
-            operatorTable.setNama(cursor.getString(cursor.getColumnIndex(myDbHelper.BRGNAME)));
-            operatorTable.setQty(Integer.parseInt(cursor.getString(cursor.getColumnIndex(myDbHelper.QTY))));
-            operatorTable.setSatuan(cursor.getString(cursor.getColumnIndex(myDbHelper.SATCODE)));
-            operatorTable.setTglkirim(cursor.getString(cursor.getColumnIndex(myDbHelper.TGLKIRIM)));
+            operatorTable.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.ID))));
+            operatorTable.setKode(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.BRGCODE)));
+            operatorTable.setNama(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.BRGNAME)));
+            operatorTable.setQty(Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.QTY))));
+            operatorTable.setSatuan(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.SATCODE)));
+            operatorTable.setTglkirim(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.TGLKIRIM)));
 
             listAll.add(operatorTable);
         }
@@ -85,12 +85,12 @@ public class Db_CRM_SO {
         {
             CRM_SO_OrderDetail operatorTable = new CRM_SO_OrderDetail();
             //here get all data from cursor and set it into setter method like below
-            operatorTable.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex(myDbHelper.ID))));
-            operatorTable.setKode(cursor.getString(cursor.getColumnIndex(myDbHelper.BRGCODE)));
-            operatorTable.setNama(cursor.getString(cursor.getColumnIndex(myDbHelper.BRGNAME)));
-            operatorTable.setQty(Integer.parseInt(cursor.getString(cursor.getColumnIndex(myDbHelper.QTY))));
-            operatorTable.setSatuan(cursor.getString(cursor.getColumnIndex(myDbHelper.SATCODE)));
-            operatorTable.setTglkirim(cursor.getString(cursor.getColumnIndex(myDbHelper.TGLKIRIM)));
+            operatorTable.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.ID))));
+            operatorTable.setKode(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.BRGCODE)));
+            operatorTable.setNama(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.BRGNAME)));
+            operatorTable.setQty(Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.QTY))));
+            operatorTable.setSatuan(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.SATCODE)));
+            operatorTable.setTglkirim(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.TGLKIRIM)));
 
             listAll.add(operatorTable);
         }
@@ -112,12 +112,12 @@ public class Db_CRM_SO {
         {
             CRM_SO_OrderDetail operatorTable = new CRM_SO_OrderDetail();
             //here get all data from cursor and set it into setter method like below
-            operatorTable.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex(myDbHelper.ID))));
-            operatorTable.setKode(cursor.getString(cursor.getColumnIndex(myDbHelper.BRGCODE)));
-            operatorTable.setNama(cursor.getString(cursor.getColumnIndex(myDbHelper.BRGNAME)));
-            operatorTable.setQty(Integer.parseInt(cursor.getString(cursor.getColumnIndex(myDbHelper.QTY))));
-            operatorTable.setSatuan(cursor.getString(cursor.getColumnIndex(myDbHelper.SATCODE)));
-            operatorTable.setTglkirim(cursor.getString(cursor.getColumnIndex(myDbHelper.TGLKIRIM)));
+            operatorTable.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.ID))));
+            operatorTable.setKode(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.BRGCODE)));
+            operatorTable.setNama(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.BRGNAME)));
+            operatorTable.setQty(Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.QTY))));
+            operatorTable.setSatuan(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.SATCODE)));
+            operatorTable.setTglkirim(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.TGLKIRIM)));
 
             listAll.add(operatorTable);
         }
@@ -139,12 +139,12 @@ public class Db_CRM_SO {
         {
             CRM_SO_OrderDetail operatorTable = new CRM_SO_OrderDetail();
             //here get all data from cursor and set it into setter method like below
-            operatorTable.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex(myDbHelper.ID))));
-            operatorTable.setKode(cursor.getString(cursor.getColumnIndex(myDbHelper.BRGCODE)));
-            operatorTable.setNama(cursor.getString(cursor.getColumnIndex(myDbHelper.BRGNAME)));
-            operatorTable.setQty(Integer.parseInt(cursor.getString(cursor.getColumnIndex(myDbHelper.QTY))));
-            operatorTable.setSatuan(cursor.getString(cursor.getColumnIndex(myDbHelper.SATCODE)));
-            operatorTable.setTglkirim(cursor.getString(cursor.getColumnIndex(myDbHelper.TGLKIRIM)));
+            operatorTable.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.ID))));
+            operatorTable.setKode(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.BRGCODE)));
+            operatorTable.setNama(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.BRGNAME)));
+            operatorTable.setQty(Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.QTY))));
+            operatorTable.setSatuan(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.SATCODE)));
+            operatorTable.setTglkirim(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.TGLKIRIM)));
 
             listAll.add(operatorTable);
         }
@@ -166,12 +166,12 @@ public class Db_CRM_SO {
         {
             CRM_SO_OrderDetail operatorTable = new CRM_SO_OrderDetail();
             //here get all data from cursor and set it into setter method like below
-            operatorTable.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex(myDbHelper.ID))));
-            operatorTable.setKode(cursor.getString(cursor.getColumnIndex(myDbHelper.BRGCODE)));
-            operatorTable.setNama(cursor.getString(cursor.getColumnIndex(myDbHelper.BRGNAME)));
-            operatorTable.setQty(Integer.parseInt(cursor.getString(cursor.getColumnIndex(myDbHelper.QTY))));
-            operatorTable.setSatuan(cursor.getString(cursor.getColumnIndex(myDbHelper.SATCODE)));
-            operatorTable.setTglkirim(cursor.getString(cursor.getColumnIndex(myDbHelper.TGLKIRIM)));
+            operatorTable.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.ID))));
+            operatorTable.setKode(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.BRGCODE)));
+            operatorTable.setNama(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.BRGNAME)));
+            operatorTable.setQty(Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.QTY))));
+            operatorTable.setSatuan(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.SATCODE)));
+            operatorTable.setTglkirim(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.TGLKIRIM)));
 
             listAll.add(operatorTable);
         }
@@ -196,7 +196,7 @@ public class Db_CRM_SO {
             operatorTable.setNama("");
             operatorTable.setQty(0);
             operatorTable.setSatuan("");
-            operatorTable.setTglkirim(cursor.getString(cursor.getColumnIndex(myDbHelper.TGLKIRIM)));
+            operatorTable.setTglkirim(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.TGLKIRIM)));
 
             listAll.add(operatorTable);
         }

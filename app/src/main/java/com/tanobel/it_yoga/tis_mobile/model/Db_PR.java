@@ -52,25 +52,25 @@ public class Db_PR {
         while (cursor.moveToNext()) {
             PR_Dtl operatorTable = new PR_Dtl();
             //here get all data from cursor and set it into setter method like below
-            operatorTable.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex(myDbHelper.ID))));
-            operatorTable.setBranch(cursor.getString(cursor.getColumnIndex(myDbHelper.BRANCH)));
-            operatorTable.setDocno(cursor.getString(cursor.getColumnIndex(myDbHelper.DOCNO)));
-            operatorTable.setNo(cursor.getString(cursor.getColumnIndex(myDbHelper.NO)));
-            operatorTable.setDocref(cursor.getString(cursor.getColumnIndex(myDbHelper.DOCREF)));
-            operatorTable.setBrgcode(cursor.getString(cursor.getColumnIndex(myDbHelper.BRGCODE)));
-            operatorTable.setBrgname(cursor.getString(cursor.getColumnIndex(myDbHelper.BRGNAME)));
-            operatorTable.setBrgdesc(cursor.getString(cursor.getColumnIndex(myDbHelper.BRGDESC)));
-            operatorTable.setSatcode(cursor.getString(cursor.getColumnIndex(myDbHelper.SATCODE)));
-            operatorTable.setQty(cursor.getString(cursor.getColumnIndex(myDbHelper.QTY)));
-            operatorTable.setSisastok(cursor.getString(cursor.getColumnIndex(myDbHelper.SISASTOK)));
-            operatorTable.setIocode(cursor.getString(cursor.getColumnIndex(myDbHelper.IOCODE)));
-            operatorTable.setStatus(cursor.getString(cursor.getColumnIndex(myDbHelper.STATUS)));
-            operatorTable.setStatusdesc(cursor.getString(cursor.getColumnIndex(myDbHelper.STATUSDESC)));
-            operatorTable.setNoref(cursor.getString(cursor.getColumnIndex(myDbHelper.NOREF)));
-            operatorTable.setTglkirim(cursor.getString(cursor.getColumnIndex(myDbHelper.TGLKIRIM)));
-            operatorTable.setApproval(cursor.getString(cursor.getColumnIndex(myDbHelper.APPROVAL)));
-            operatorTable.setUserapproval(cursor.getString(cursor.getColumnIndex(myDbHelper.USERAPPROVAL)));
-            operatorTable.setStatusold(cursor.getString(cursor.getColumnIndex(myDbHelper.STATUSOLD)));
+            operatorTable.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.ID))));
+            operatorTable.setBranch(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.BRANCH)));
+            operatorTable.setDocno(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.DOCNO)));
+            operatorTable.setNo(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.NO)));
+            operatorTable.setDocref(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.DOCREF)));
+            operatorTable.setBrgcode(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.BRGCODE)));
+            operatorTable.setBrgname(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.BRGNAME)));
+            operatorTable.setBrgdesc(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.BRGDESC)));
+            operatorTable.setSatcode(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.SATCODE)));
+            operatorTable.setQty(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.QTY)));
+            operatorTable.setSisastok(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.SISASTOK)));
+            operatorTable.setIocode(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.IOCODE)));
+            operatorTable.setStatus(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.STATUS)));
+            operatorTable.setStatusdesc(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.STATUSDESC)));
+            operatorTable.setNoref(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.NOREF)));
+            operatorTable.setTglkirim(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.TGLKIRIM)));
+            operatorTable.setApproval(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.APPROVAL)));
+            operatorTable.setUserapproval(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.USERAPPROVAL)));
+            operatorTable.setStatusold(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.STATUSOLD)));
 
             listAll.add(operatorTable);
         }
@@ -89,10 +89,10 @@ public class Db_PR {
         while (cursor.moveToNext()) {
             PR_Dtl operatorTable = new PR_Dtl();
             //here get all data from cursor and set it into setter method like below
-            operatorTable.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex(myDbHelper.ID))));
-            operatorTable.setBranch(cursor.getString(cursor.getColumnIndex(myDbHelper.BRANCH)));
-            operatorTable.setDocno(cursor.getString(cursor.getColumnIndex(myDbHelper.DOCNO)));
-            operatorTable.setNo(cursor.getString(cursor.getColumnIndex(myDbHelper.NO)));
+            operatorTable.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.ID))));
+            operatorTable.setBranch(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.BRANCH)));
+            operatorTable.setDocno(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.DOCNO)));
+            operatorTable.setNo(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.NO)));
             listAll.add(operatorTable);
         }
 
@@ -112,11 +112,11 @@ public class Db_PR {
         while (cursor.moveToNext()) {
             PR_Dtl operatorTable = new PR_Dtl();
             //here get all data from cursor and set it into setter method like below
-            operatorTable.setBranch(cursor.getString(cursor.getColumnIndex(myDbHelper.BRANCH)));
-            operatorTable.setDocno(cursor.getString(cursor.getColumnIndex(myDbHelper.DOCNO)));
-            operatorTable.setApproval(cursor.getString(cursor.getColumnIndex(myDbHelper.APPROVAL)));
-            operatorTable.setUserapproval(cursor.getString(cursor.getColumnIndex(myDbHelper.USERAPPROVAL)));
-            operatorTable.setStatus(cursor.getString(cursor.getColumnIndex(myDbHelper.STATUS)));
+            operatorTable.setBranch(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.BRANCH)));
+            operatorTable.setDocno(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.DOCNO)));
+            operatorTable.setApproval(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.APPROVAL)));
+            operatorTable.setUserapproval(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.USERAPPROVAL)));
+            operatorTable.setStatus(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.STATUS)));
             listAll.add(operatorTable);
         }
 
@@ -136,11 +136,11 @@ public class Db_PR {
         while (cursor.moveToNext()) {
             PR_Dtl operatorTable = new PR_Dtl();
             //here get all data from cursor and set it into setter method like below
-            operatorTable.setBranch(cursor.getString(cursor.getColumnIndex(myDbHelper.BRANCH)));
-            operatorTable.setDocno(cursor.getString(cursor.getColumnIndex(myDbHelper.DOCNO)));
-            operatorTable.setApproval(cursor.getString(cursor.getColumnIndex(myDbHelper.APPROVAL)));
-            operatorTable.setUserapproval(cursor.getString(cursor.getColumnIndex(myDbHelper.USERAPPROVAL)));
-            operatorTable.setStatus(cursor.getString(cursor.getColumnIndex(myDbHelper.STATUS)));
+            operatorTable.setBranch(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.BRANCH)));
+            operatorTable.setDocno(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.DOCNO)));
+            operatorTable.setApproval(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.APPROVAL)));
+            operatorTable.setUserapproval(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.USERAPPROVAL)));
+            operatorTable.setStatus(cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.STATUS)));
             listAll.add(operatorTable);
         }
 

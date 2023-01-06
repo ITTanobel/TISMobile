@@ -96,7 +96,8 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         style="@style/parent"
-                        android:layout_marginTop="@dimen/signup_text_margin_top">
+                        android:layout_marginTop="@dimen/signup_text_margin_top"
+                        app:passwordToggleEnabled="true">
 
                         <EditText
                             style="@style/modifiedEditText"
@@ -109,7 +110,8 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         style="@style/parent"
-                        android:layout_marginTop="@dimen/signup_text_margin_top">
+                        android:layout_marginTop="@dimen/signup_text_margin_top"
+                        app:passwordToggleEnabled="true">
 
                         <EditText
                             style="@style/modifiedEditText"
