@@ -33,7 +33,7 @@ public class RequestPost {
     final MediaType MEDIA_TYPE_IMG = MediaType.parse("image/*");
     //IP server
     //String url="http://172.16.16.23/tis-mobile/";
-    String url="https://www.tanobelfood.com/tis-mobile-dev/";
+    String url="https://www.tanobelfood.com/tis-mobile/";
     InternetConnection internetCon=new InternetConnection();
     public RequestPost(String path, JSONObject json, Context context) {
         if (internetCon.checkConnection(context)) {
