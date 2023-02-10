@@ -49,7 +49,8 @@ public class PR_Fragment_Master extends Fragment  {
         pDialog = new ProgressDialog(getActivity());
         pDialog.setMessage("Please wait....");
         pDialog.setIndeterminate(true);
-        pDialog.setCancelable(true);
+        pDialog.setCancelable(false);
+        pDialog.setCanceledOnTouchOutside(false);
 
         PR_Detail prdetail = (PR_Detail) getActivity();
         plant = prdetail.plant;

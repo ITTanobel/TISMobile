@@ -70,7 +70,8 @@ public class GR_Detail extends AppCompatActivity {
         pDialog = new ProgressDialog(GR_Detail.this);
         pDialog.setMessage("Please wait....");
         pDialog.setIndeterminate(true);
-        pDialog.setCancelable(true);
+        pDialog.setCancelable(false);
+        pDialog.setCanceledOnTouchOutside(false);
 
         Intent intent = getIntent();
         Bundle bd = intent.getExtras();

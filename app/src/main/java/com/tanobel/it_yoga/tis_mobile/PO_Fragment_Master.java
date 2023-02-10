@@ -52,7 +52,8 @@ public class PO_Fragment_Master extends Fragment  {
         pDialog = new ProgressDialog(getActivity());
         pDialog.setMessage("Please wait....");
         pDialog.setIndeterminate(true);
-        pDialog.setCancelable(true);
+        pDialog.setCancelable(false);
+        pDialog.setCanceledOnTouchOutside(false);
 
         PO_Detail podetail = (PO_Detail) getActivity();
         plant = podetail.plant;

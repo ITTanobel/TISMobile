@@ -69,7 +69,8 @@ public class PR_Detail extends AppCompatActivity {
         pDialog = new ProgressDialog(PR_Detail.this);
         pDialog.setMessage("Please wait....");
         pDialog.setIndeterminate(true);
-        pDialog.setCancelable(true);
+        pDialog.setCancelable(false);
+        pDialog.setCanceledOnTouchOutside(false);
 
         Intent intent = getIntent();
         Bundle bd = intent.getExtras();

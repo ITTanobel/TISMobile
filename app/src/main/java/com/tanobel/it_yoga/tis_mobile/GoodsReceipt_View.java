@@ -78,7 +78,8 @@ public class GoodsReceipt_View<onCreate> extends AppCompatActivity implements Se
         pDialog = new ProgressDialog(GoodsReceipt_View.this);
         pDialog.setMessage("Please wait....");
         pDialog.setIndeterminate(true);
-        pDialog.setCancelable(true);
+        pDialog.setCancelable(false);
+        pDialog.setCanceledOnTouchOutside(false);
 
         textdtl = findViewById(R.id.text_view_dtl);
         textdtl.setText("Detail GR");

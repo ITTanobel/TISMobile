@@ -55,7 +55,8 @@ public class PO_Fragment_DetailJdw extends Fragment {
         pDialog = new ProgressDialog(getActivity());
         pDialog.setMessage("Please wait....");
         pDialog.setIndeterminate(true);
-        pDialog.setCancelable(true);
+        pDialog.setCancelable(false);
+        pDialog.setCanceledOnTouchOutside(false);
 
         PO_Detail prdetail = (PO_Detail) getActivity();
         plant = prdetail.plant;

@@ -53,7 +53,8 @@ public class GR_Fragment_Master extends Fragment {
         pDialog = new ProgressDialog(getActivity());
         pDialog.setMessage("Please wait....");
         pDialog.setIndeterminate(true);
-        pDialog.setCancelable(true);
+        pDialog.setCancelable(false);
+        pDialog.setCanceledOnTouchOutside(false);
 
         GR_Detail grdetail = (GR_Detail) getActivity();
         plant = grdetail.plant;
